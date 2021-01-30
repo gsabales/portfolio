@@ -6,3 +6,88 @@
   flex-direction: column;
   align-items: center;
 }
+
+.bg-section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  position: relative;
+  background: url("../assets/images/stock-photo.jpg") bottom right;
+  background-size: cover;
+}
+
+// ::before is called pseudo-element. This inserts a content before the actual content of the element
+.bg-section::before {
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  background: rgba(5, 13, 24, 0.3);
+  z-index: 1;
+}
+
+.bg-container {
+  position: relative;
+  z-index: 2;
+  min-width: 300px;
+  color: whitesmoke;
+}
+
+.bg-container h1, p {
+  font-family: "Raleway", sans-serif;
+}
+
+.side-menu-body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 380px;
+  background: #13215e;
+  color: snow;
+  z-index: 9997;
+}
+
+.profile h1 {
+  font-size: 30px;
+  font-weight: 600;
+  text-align-last: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.profile .social-links a{
+  font-size: 25px;
+  display: inline-block;
+  background: #044c76;
+  color: #fff;
+  line-height: 1;
+  padding: 13px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  transition: 0.3s;
+}
+
+.profile .social-links a:hover {
+  background-color: #2eafec;
+}
+
+.profile img {
+  margin: 15px auto;
+  display: block;
+  height: 150px;
+  width: 150px;
+  border: 8px solid #044c76;
+}
+
+.menu-list li a {
+  font-size: 20px;
+}
+
+.menu-list li i {
+  font-size: 1.5em;
+}
