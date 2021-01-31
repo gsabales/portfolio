@@ -7,12 +7,13 @@
   align-items: center;
 }
 
+/* Background section */
 .bg-section {
   height: 100vh;
   width: 100%;
   display: flex;
   position: relative;
-  background: url("../assets/images/stock-photo.jpg") bottom right;
+  background: url("../assets/images/stock-photo2.jpg") bottom right;
   background-size: cover;
 }
 
@@ -35,40 +36,62 @@
   color: whitesmoke;
 }
 
-.bg-container h1, p {
+.bg-container h1 {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 56px;
   font-family: "Raleway", sans-serif;
+  margin: 0;
 }
 
+.bg-container p {
+  font-size: 30px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 2px;
+}
+
+#typed {
+  //padding-bottom: 3px;
+  //border-bottom-color: #2eafec;
+  //border-bottom-style: solid;
+  //border-bottom-width: 3.1px;
+  //width: fit-content;
+  color: #4ddbec;
+}
+/* End of Background section */
+
+/* Side menu section */
 .side-menu-body {
+  padding: 0 15px;
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
-  width: 380px;
-  background: #13215e;
+  width: 300px;
+  background: #0f1034;
   color: snow;
   z-index: 9997;
 }
 
 .profile h1 {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 600;
   text-align-last: center;
   font-family: "Poppins", sans-serif;
 }
 
 .profile .social-links a{
-  font-size: 25px;
+  font-size: 18px;
   display: inline-block;
-  background: #044c76;
+  background: #08105b;
   color: #fff;
   line-height: 1;
-  padding: 13px 0;
+  padding: 8px 0;
   margin-right: 4px;
   border-radius: 50%;
   text-align: center;
-  width: 50px;
-  height: 50px;
+  width: 36px;
+  height: 36px;
   transition: 0.3s;
 }
 
@@ -79,15 +102,46 @@
 .profile img {
   margin: 15px auto;
   display: block;
-  height: 150px;
-  width: 150px;
-  border: 8px solid #044c76;
+  height: 120px;
+  width: 120px;
+  border: 8px solid #08105b;
 }
 
 .menu-list li a {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .menu-list li i {
-  font-size: 1.5em;
+  font-size: 24px;
+  padding-right: 8px;
 }
+/* End of Side menu section */
+
+/* Navigation menu */
+.nav-button {
+  position: fixed;
+  right: 20px;
+  top: 10px;
+  z-index: 9998;
+  background: none;
+  font-size: 24px;
+  transition: all 0.4s;
+  outline: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  user-select: none;
+  line-height: 1;
+  cursor: pointer;
+  text-align: right;
+  color: #08105b;
+}
+
+.nav-button:active,
+.nav-button:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+  background: none;
+}
+
+
