@@ -144,4 +144,27 @@
   background: none;
 }
 
+// The succeeding two blocks means that at minimum width of 1120px,
+// left margin should be 0 (sidebar shown as is). Once viewport is
+// less than 1120, left margin will be reduced and transition effect
+// will take place
+.sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -20rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .5s ease-in-out;
+}
+
+@media (min-width: 1120px) {
+  .sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  .sidebar-wrapper.toggled {
+    margin-left: -20rem;
+  }
+}
+
 

@@ -1,12 +1,12 @@
-<div class="container-fluid">
+<div class="container-fluid pl-0">
   <!--  Navigation menu button-->
-      <button type="button" id="sidebarCollapse" class="btn nav-button">
+      <button type="button" id="sidebarCollapse" class="btn nav-button" (click)="isNavClicked()">
         <i class="icofont-navigation-menu"></i>
       </button>
 
   <div class="row">
     <div class="col-12">
-      <div class="side-menu-body">
+      <div #sideMenu class="side-menu-body sidebar-wrapper">
         <!-- Profile Section -->
         <div class="profile">
           <img src="assets/images/profile-pic.jpg" alt="" class="img-fluid rounded-circle">
