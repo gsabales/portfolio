@@ -31,5 +31,7 @@ export class AppComponent implements OnInit{
       sideMenuClassList.add('toggled');
     }
 
+    console.log(sideMenuClassList);
+
   }
 }

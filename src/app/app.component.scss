@@ -34,6 +34,13 @@
   z-index: 2;
   min-width: 300px;
   color: whitesmoke;
+  margin-left: 30px;
+}
+
+@media (min-width: 1120px) {
+  .bg-container {
+    margin-left: 0;
+  }
 }
 
 .bg-container h1 {
@@ -119,6 +126,7 @@
 
 /* Navigation menu */
 .nav-button {
+  visibility: visible;
   position: fixed;
   right: 20px;
   top: 10px;
@@ -144,27 +152,32 @@
   background: none;
 }
 
-// The succeeding two blocks means that at minimum width of 1120px,
-// left margin should be 0 (sidebar shown as is). Once viewport is
-// less than 1120, left margin will be reduced and transition effect
-// will take place
+/* The succeeding two blocks means that at minimum width of 1120px, left margin should be 0 (sidebar shown as is).
+ Once viewport is less than 1120, left margin will be reduced and transition effect will take place */
 .sidebar-wrapper {
   min-height: 100vh;
   margin-left: -20rem;
-  -webkit-transition: margin .25s ease-out;
-  -moz-transition: margin .25s ease-out;
-  -o-transition: margin .25s ease-out;
+  -webkit-transition: margin .5s ease-in-out;
+  -moz-transition: margin .5s ease-in-out;
+  -o-transition: margin .5s ease-in-out;
   transition: margin .5s ease-in-out;
 }
 
+/* This class is only added upon clicking the nav button */
+.toggled {
+  margin-left: 0;
+}
+
 @media (min-width: 1120px) {
+  /* For larger viewport, nav button is hidden by default */
+  .nav-button {
+    visibility: hidden;
+  }
+
   .sidebar-wrapper {
     margin-left: 0;
   }
 
-  .sidebar-wrapper.toggled {
-    margin-left: -20rem;
-  }
 }
 
 
