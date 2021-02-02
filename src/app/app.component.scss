@@ -5,7 +5,7 @@
   width: 100%;
   display: flex;
   position: relative;
-  background: url("../assets/images/stock-photo2.jpg") bottom right fixed;
+  background: url("../assets/images/stock-photo2.jpg") bottom right;
   background-size: cover;
 
 }
@@ -33,6 +33,12 @@
 @media (min-width: 1200px) {
   .bg-container {
     margin-left: 0;
+  }
+}
+
+@media (min-width: 480px) {
+  .bg-section {
+    background-attachment: fixed;
   }
 }
 
@@ -122,7 +128,7 @@
 .nav-button {
   visibility: visible;
   position: fixed;
-  right: 20px;
+  right: 10px;
   top: 10px;
   z-index: 9998;
   background: none;
@@ -177,12 +183,12 @@
 /* Main Section */
 
 #main {
-  margin-left: 0;
+  margin-left: 15px;
 }
 
 @media (min-width: 1200px) {
   #main {
-    margin-left: 300px;
+    margin-left: 315px;
   }
 }
 
@@ -193,6 +199,10 @@
 .about-img {
   width: 100%;
   height: 100%;
+}
+
+#about p {
+  font-family: "Open Sans", sans-serif;
 }
 
 /* End of About Section*/
