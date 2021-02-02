@@ -1,11 +1,3 @@
-.content {
-  display: flex;
-  margin: 82px auto 32px;
-  padding: 0 16px;
-  max-width: 960px;
-  flex-direction: column;
-  align-items: center;
-}
 
 /* Background section */
 .bg-section {
@@ -15,6 +7,7 @@
   position: relative;
   background: url("../assets/images/stock-photo2.jpg") bottom right;
   background-size: cover;
+
 }
 
 // ::before is called pseudo-element. This inserts a content before the actual content of the element
@@ -34,6 +27,19 @@
   z-index: 2;
   min-width: 300px;
   color: whitesmoke;
+  margin-left: 30px;
+}
+
+@media (min-width: 1200px) {
+  .bg-container {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 480px) {
+  .bg-section {
+    background-attachment: fixed;
+  }
 }
 
 .bg-container h1 {
@@ -71,6 +77,7 @@
   background: #0f1034;
   color: snow;
   z-index: 9997;
+  overflow-y: auto;
 }
 
 .profile h1 {
@@ -119,8 +126,9 @@
 
 /* Navigation menu */
 .nav-button {
+  visibility: visible;
   position: fixed;
-  right: 20px;
+  right: 10px;
   top: 10px;
   z-index: 9998;
   background: none;
@@ -144,27 +152,59 @@
   background: none;
 }
 
-// The succeeding two blocks means that at minimum width of 1120px,
-// left margin should be 0 (sidebar shown as is). Once viewport is
-// less than 1120, left margin will be reduced and transition effect
-// will take place
+/* The succeeding two blocks means that at minimum width of 1120px, left margin should be 0 (sidebar shown as is).
+ Once viewport is less than 1120, left margin will be reduced and transition effect will take place */
 .sidebar-wrapper {
   min-height: 100vh;
   margin-left: -20rem;
-  -webkit-transition: margin .25s ease-out;
-  -moz-transition: margin .25s ease-out;
-  -o-transition: margin .25s ease-out;
+  -webkit-transition: margin .5s ease-in-out;
+  -moz-transition: margin .5s ease-in-out;
+  -o-transition: margin .5s ease-in-out;
   transition: margin .5s ease-in-out;
 }
 
-@media (min-width: 1120px) {
+/* This class is only added upon clicking the nav button */
+.toggled {
+  margin-left: 0;
+}
+
+@media (min-width: 1200px) {
+  /* For larger viewport, nav button is hidden by default */
+  .nav-button {
+    visibility: hidden;
+  }
+
   .sidebar-wrapper {
     margin-left: 0;
   }
+}
+/* End of Navigation menu */
 
-  .sidebar-wrapper.toggled {
-    margin-left: -20rem;
+/* Main Section */
+
+#main {
+  margin-left: 15px;
+}
+
+@media (min-width: 1200px) {
+  #main {
+    margin-left: 315px;
   }
 }
+
+/* End of Main Section*/
+
+/* About Section */
+
+.about-img {
+  width: 100%;
+  height: 100%;
+}
+
+#about p {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* End of About Section*/
 
 

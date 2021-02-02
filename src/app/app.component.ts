@@ -1,5 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import Typed from 'typed.js';
+import {GeneralService} from './services/general.service';
+import {Quote} from './models/Quote';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,12 @@ import Typed from 'typed.js';
 })
 export class AppComponent implements OnInit{
   toggle: boolean;
+  quotes: Quote[];
+  quote: string;
+  author: string;
   @ViewChild('sideMenu') sideMenuRef: ElementRef;
+
+  constructor(private generalService: GeneralService) { }
 
   ngOnInit(): void {
     this.toggle = false;
@@ -19,6 +26,8 @@ export class AppComponent implements OnInit{
       backDelay: 2000,
       loop: true
     });
+
+    this.getGeneratedQuote();
   }
 
   isNavClicked(): void {
@@ -30,6 +39,14 @@ export class AppComponent implements OnInit{
     } else {
       sideMenuClassList.add('toggled');
     }
+  }
 
+  getGeneratedQuote(): void {
+    this.generalService.getRandomQuote().subscribe(quotes => {
+        const index = Math.round(Math.random() * 1643);
+        this.quote = quotes[index].text;
+        this.author = (quotes[index].author !== null) ? quotes[index].author : 'Anonymous';
+      }
+    );
   }
 }
