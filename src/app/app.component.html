@@ -27,9 +27,12 @@
 
         <!-- Menu -->
         <nav class="nav-menu menu-list">
-          <li class="active"><a href="#home"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+          <li (click)="option = 'home'" [ngClass]="isActive('home')"><a href="#home">
+            <i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li (click)="option = 'about'" [ngClass]="isActive('about')"><a href="#about">
+            <i class="bx bx-user"></i> <span>About</span></a></li>
+          <li (click)="option = 'resume'" [ngClass]="isActive('resume')"><a href="#resume">
+            <i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
           <li><a href="#portfolio"><i class="bx bx-book-content"></i> Portfolio</a></li>
           <li><a href="#services"><i class="bx bx-server"></i> Services</a></li>
           <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>
@@ -179,13 +182,24 @@
                   <p><em>Polytechnic University of the Philippines</em></p>
                   <p>
                     Our thesis entitled Asynchronous Online Security System using Occupancy Detection was chosen to be published and presented in a
-                    research conference in Hanoi, Vietnam
+                    research conference in Hanoi, Vietnam. I was assigned as the QA and technical writer of the team.
                   </p>
                 </div>
               </div>
 
               <div class="col-lg-6">
                 <h3 class="resume-title">Professional Experience</h3>
+                <div class="resume-item">
+                  <h4>Web Developer</h4>
+                  <h5>2019 - Present</h5>
+                  <p><em>Novare Technologies, Inc.</em></p>
+                  <ul>
+                    <li>Assigned to be a part of the development team for an AWS instance ticketing system for the client</li>
+                    <li>Created a desk reservation system as an internal project for the company</li>
+                    <li>API integration for third-party applications to access video service of a well-known telehealth service provider</li>
+                    <li>Assigned as acting internal team lead of L3 support team catering two projects</li>
+                  </ul>
+                </div>
                 <div class="resume-item">
                   <h4>Embedded System Unit Tester</h4>
                   <h5>2014 - 2019</h5>
@@ -195,7 +209,6 @@
                     <li>Submit the performed unit testing to cross-checker for validation</li>
                   </ul>
                 </div>
-
               </div>
             </div>
           </div>

@@ -13,6 +13,7 @@ export class AppComponent implements OnInit{
   quotes: Quote[];
   quote: string;
   author: string;
+  option: string;
   @ViewChild('sideMenu') sideMenuRef: ElementRef;
 
   constructor(private generalService: GeneralService) { }
@@ -48,5 +49,9 @@ export class AppComponent implements OnInit{
         this.author = (quotes[index].author !== null) ? quotes[index].author : 'Anonymous';
       }
     );
+  }
+
+  isActive(option: string): string {
+    return (this.option === option) ? 'active' : '';
   }
 }
