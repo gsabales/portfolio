@@ -27,9 +27,9 @@
 
         <!-- Menu -->
         <nav class="nav-menu menu-list">
-          <li [ngClass]="isActive('home')"><a href="#home"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li [ngClass]="isActive('about')"><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li [ngClass]="isActive('resume')"><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+          <li [ngClass]="{'active': currentActive === 'home' }"><a href="#home"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li [ngClass]="{'active': currentActive === 'about' }"><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+          <li [ngClass]="{'active': currentActive === 'resume' }"><a href="#resume"><i class="bx bx-file-blank"></i><span>Resume</span></a></li>
           <li><a href="#portfolio"><i class="bx bx-book-content"></i> Portfolio</a></li>
           <li><a href="#services"><i class="bx bx-server"></i> Services</a></li>
           <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>

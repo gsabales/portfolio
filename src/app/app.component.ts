@@ -2,8 +2,8 @@ import {AfterViewInit, Component, ElementRef, HostListener, Inject, OnInit, View
 import Typed from 'typed.js';
 import {GeneralService} from './services/general.service';
 import {Quote} from './models/Quote';
-import {Scroll} from '@angular/router';
 import {DOCUMENT} from '@angular/common';
+import {HOME, ABOUT, RESUME, TOGGLED} from './utils/constants';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +16,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   quote: string;
   author: string;
   option: string;
+
   @ViewChild('sideMenu') sideMenuRef: ElementRef;
   @ViewChild('home') homeSectionRef: ElementRef;
   @ViewChild('about') aboutSectionRef: ElementRef;
@@ -55,11 +56,8 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.toggle = !this.toggle;
     const sideMenuClassList = this.sideMenuRef.nativeElement.classList;
 
-    if (sideMenuClassList.contains('toggled')) {
-      sideMenuClassList.remove('toggled');
-    } else {
-      sideMenuClassList.add('toggled');
-    }
+    /* Toggle side bar by adding .toggled class which sets margin to 0. By default, left margin is -20rem. */
+    (sideMenuClassList.contains(TOGGLED)) ? sideMenuClassList.remove(TOGGLED) : sideMenuClassList.add(TOGGLED);
   }
 
   getGeneratedQuote(): void {
@@ -78,11 +76,11 @@ export class AppComponent implements OnInit, AfterViewInit{
   @HostListener('window:scroll', ['$event'])
   onScroll(): void {
     if (this.isWithinRange(window.pageYOffset, this.homeOffset, this.aboutOffset)) {
-      this.currentActive = 'home';
+      this.currentActive = HOME;
     } else if (this.isWithinRange(window.pageYOffset, this.aboutOffset, this.resumeOffset)) {
-      this.currentActive = 'about';
+      this.currentActive = ABOUT;
     } else if (window.pageYOffset >= this.resumeOffset) {
-      this.currentActive = 'resume';
+      this.currentActive = RESUME;
     }
   }
 
