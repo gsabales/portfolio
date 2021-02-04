@@ -193,6 +193,13 @@
   }
 }
 
+#main p, li {
+  font-family: "Open Sans", sans-serif;
+}
+
+#main li {
+  font-size: 0.9em;
+}
 /* End of Main Section*/
 
 /* About Section */
@@ -200,10 +207,6 @@
 .about-img {
   width: 100%;
   height: 100%;
-}
-
-#main p {
-  font-family: "Open Sans", sans-serif;
 }
 
 /* End of About Section*/
