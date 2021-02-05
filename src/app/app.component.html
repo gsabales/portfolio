@@ -1,6 +1,6 @@
 <div class="container-fluid pl-0">
   <!--  Navigation menu button-->
-      <button type="button" id="sidebarCollapse" class="btn nav-button" (click)="isNavClicked()">
+      <button type="button" id="sidebarCollapse" class="btn nav-button" (click)="toggleSideMenu()">
         <div *ngIf="!toggle, else close"><i class="icofont-navigation-menu"></i></div>
         <ng-template #close><i class="icofont-close" style="font-weight: 600"></i></ng-template>
       </button>
@@ -26,7 +26,7 @@
         </div>
 
         <!-- Menu -->
-        <nav class="nav-menu menu-list">
+        <nav class="nav-menu menu-list" (click)="menuClicked()">
           <li [ngClass]="{'active': currentActive === 'home' }"><a href="#home"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li [ngClass]="{'active': currentActive === 'about' }"><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
           <li [ngClass]="{'active': currentActive === 'resume' }"><a href="#resume"><i class="bx bx-file-blank"></i><span>Resume</span></a></li>
