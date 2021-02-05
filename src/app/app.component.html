@@ -27,12 +27,9 @@
 
         <!-- Menu -->
         <nav class="nav-menu menu-list">
-          <li (click)="option = 'home'" [ngClass]="isActive('home')"><a href="#home">
-            <i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li (click)="option = 'about'" [ngClass]="isActive('about')"><a href="#about">
-            <i class="bx bx-user"></i> <span>About</span></a></li>
-          <li (click)="option = 'resume'" [ngClass]="isActive('resume')"><a href="#resume">
-            <i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+          <li [ngClass]="{'active': currentActive === 'home' }"><a href="#home"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li [ngClass]="{'active': currentActive === 'about' }"><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+          <li [ngClass]="{'active': currentActive === 'resume' }"><a href="#resume"><i class="bx bx-file-blank"></i><span>Resume</span></a></li>
           <li><a href="#portfolio"><i class="bx bx-book-content"></i> Portfolio</a></li>
           <li><a href="#services"><i class="bx bx-server"></i> Services</a></li>
           <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>
@@ -40,7 +37,7 @@
       </div>
 
       <!-- Background Image -->
-      <section id="home" class="bg-section flex-column justify-content-center align-items-center">
+      <section #home id="home" class="bg-section flex-column justify-content-center align-items-center">
         <div class="bg-container">
           <h1>Glenn Sabales</h1>
           <p>I'm <span id="typed"></span></p>
@@ -49,7 +46,7 @@
 
       <main id="main">
         <!-- About Section -->
-        <section id="about" class="about">
+        <section #about id="about" class="about">
           <div class="container">
             <div class="section-title">
               <h2>About</h2>
@@ -94,7 +91,7 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="skills section-bg">
+        <section #skills id="skills" class="skills section-bg">
           <div class="container">
             <section class="section-title pt-0">
               <h2>Skills</h2>
@@ -149,7 +146,7 @@
         </section>
 
         <!-- Resume Section -->
-        <section id="resume" class="resume">
+        <section #resume id="resume" class="resume">
           <div class="container">
             <section class="section-title pt-0">
               <h2>Resume</h2>
@@ -180,7 +177,7 @@
                   <h4>Bachelor of Science in Computer Science</h4>
                   <h5>2010 - 2014</h5>
                   <p><em>Polytechnic University of the Philippines</em></p>
-                  <p>
+                  <p style="font-size: 0.9em">
                     Our thesis entitled Asynchronous Online Security System using Occupancy Detection was chosen to be published and presented in a
                     research conference in Hanoi, Vietnam. I was assigned as the QA and technical writer of the team.
                   </p>
