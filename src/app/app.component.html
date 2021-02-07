@@ -5,10 +5,10 @@
         <ng-template #close><i class="icofont-close" style="font-weight: 600"></i></ng-template>
       </button>
 
-  <div class="row">
+  <div class="row" (click)="collapseMenu()">
     <div class="col-12 p-0">
+      <!-- Side Menu Section -->
       <div #sideMenu class="side-menu-body sidebar-wrapper">
-        <!-- Profile Section -->
         <div class="profile">
           <img src="assets/images/profile-pic.jpg" alt="" class="img-fluid rounded-circle">
           <h1 class="text-light">Glenn Sabales</h1>
@@ -26,13 +26,13 @@
         </div>
 
         <!-- Menu -->
-        <nav class="nav-menu menu-list" (click)="menuClicked()">
+        <nav class="nav-menu menu-list" (click)="toggleMenuIfClicked()">
           <li [ngClass]="{'active': currentActive === 'home' }"><a href="#home"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li [ngClass]="{'active': currentActive === 'about' }"><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
           <li [ngClass]="{'active': currentActive === 'resume' }"><a href="#resume"><i class="bx bx-file-blank"></i><span>Resume</span></a></li>
-          <li><a href="#portfolio"><i class="bx bx-book-content"></i> Portfolio</a></li>
-          <li><a href="#services"><i class="bx bx-server"></i> Services</a></li>
-          <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>
+          <li [ngClass]="{'active': currentActive === 'portfolio' }"><a href="#portfolio"><i class="bx bx-book-content"></i>Projects</a></li>
+          <li><a href="#services"><i class="bx bx-server"></i>Services</a></li>
+          <li><a href="#contact"><i class="bx bx-envelope"></i>Contact</a></li>
         </nav>
       </div>
 
@@ -146,7 +146,7 @@
         </section>
 
         <!-- Resume Section -->
-        <section #resume id="resume" class="resume">
+        <section #resume id="resume" class="resume pb-4">
           <div class="container">
             <section class="section-title pt-0">
               <h2>Resume</h2>
@@ -210,6 +210,52 @@
             </div>
           </div>
         </section>
+
+        <!-- Portfolio Section-->
+        <section #portfolio id="portfolio" class="bg-section section-bg">
+          <div class="container portfolio-section">
+            <section class="section-title pt-0">
+              <h2>Projects</h2>
+              <p>Here are some of the projects in which I was involved with the development.</p>
+            </section>
+
+            <div class="container">
+              <div class="row card-table">
+                <div class="col-md-4">
+                  <button class="card mb-4" data-toggle="modal" data-target="#exampleModal">
+                    <img class="card-img-top project1-img">
+                    <div class="card-body">
+                      <h5>Project Forge</h5>
+                      <p class="card-text">An AWS instance ticketing system for Globe</p>
+                    </div>
+
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   </div>

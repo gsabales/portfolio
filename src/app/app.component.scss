@@ -7,10 +7,10 @@
   position: relative;
   background: url("../assets/images/stock-photo2.jpg") bottom right;
   background-size: cover;
-
 }
 
-// ::before is called pseudo-element. This inserts a content before the actual content of the element
+/* ::before is called pseudo-element. This inserts a content before the actual content of the element.
+  This is for the blur effect */
 .bg-section::before {
   content: "";
   top: 0;
@@ -202,13 +202,42 @@
 }
 /* End of Main Section*/
 
-/* About Section */
-
 .about-img {
   width: 100%;
   height: 100%;
 }
 
-/* End of About Section*/
+.portfolio-section {
+  z-index: 1;
+}
 
+.portfolio-section section h2,
+.portfolio-section section p{
+  color: whitesmoke;
+}
 
+.portfolio-section section h2::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #4ddbec;
+  bottom: 0;
+  left: 0;
+}
+
+.portfolio-section img {
+  height: 225px;
+  width: 100%;
+  display: block;
+}
+
+.project1-img {
+  background-image: url("https://aatralcreations.com/wp-content/uploads/2020/05/placeholder-1-2.png");
+  background-repeat: round;
+}
+
+.card-table {
+  font-size: smaller;
+}

@@ -3,7 +3,7 @@ import Typed from 'typed.js';
 import {GeneralService} from './services/general.service';
 import {Quote} from './models/Quote';
 import {DOCUMENT} from '@angular/common';
-import {HOME, ABOUT, RESUME, TOGGLED} from './utils/constants';
+import {HOME, ABOUT, RESUME, TOGGLED, PORTFOLIO} from './utils/constants';
 
 @Component({
   selector: 'app-root',
@@ -22,12 +22,14 @@ export class AppComponent implements OnInit, AfterViewInit{
   @ViewChild('about') aboutSectionRef: ElementRef;
   @ViewChild('skills') skillsSectionRef: ElementRef;
   @ViewChild('resume') resumeSectionRef: ElementRef;
+  @ViewChild('portfolio') portfolioSectionRef: ElementRef;
 
   currentActive = 'home';
   homeOffset: number = null;
   aboutOffset: number = null;
   skillsOffset: number = null;
   resumeOffset: number = null;
+  portfolioOffset: number = null;
 
   constructor(private generalService: GeneralService,
               @Inject(DOCUMENT) private document: any) { }
@@ -63,6 +65,7 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.aboutOffset = this.aboutSectionRef.nativeElement.offsetTop;
     this.skillsOffset = this.skillsSectionRef.nativeElement.offsetTop;
     this.resumeOffset = this.resumeSectionRef.nativeElement.offsetTop;
+    this.portfolioOffset = this.portfolioSectionRef.nativeElement.offsetTop;
   }
 
   toggleSideMenu(): void {
@@ -73,10 +76,17 @@ export class AppComponent implements OnInit, AfterViewInit{
     (sideMenuClassList.contains(TOGGLED)) ? sideMenuClassList.remove(TOGGLED) : sideMenuClassList.add(TOGGLED);
   }
 
-  menuClicked(): void {
+  toggleMenuIfClicked(): void {
     /* If window width is less than 1200px, sidebar should be collapsable upon clicking menu items*/
     if (window.innerWidth < 1200) {
       this.toggleSideMenu();
+    }
+  }
+
+  collapseMenu(): void {
+    const sideMenuClassList = this.sideMenuRef.nativeElement.classList;
+    if (window.innerWidth < 1200 && sideMenuClassList.contains(TOGGLED)) {
+      sideMenuClassList.remove(TOGGLED);
     }
   }
 
@@ -86,8 +96,10 @@ export class AppComponent implements OnInit, AfterViewInit{
       this.currentActive = HOME;
     } else if (this.isWithinRange(window.pageYOffset, this.aboutOffset, this.resumeOffset)) {
       this.currentActive = ABOUT;
-    } else if (window.pageYOffset >= this.resumeOffset) {
+    } else if (this.isWithinRange(window.pageYOffset, this.resumeOffset, this.portfolioOffset)) {
       this.currentActive = RESUME;
+    } else if (window.pageYOffset >= this.portfolioOffset) {
+      this.currentActive = PORTFOLIO;
     }
   }
 
