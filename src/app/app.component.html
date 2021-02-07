@@ -16,11 +16,11 @@
             <a href="https://www.linkedin.com/in/glenn-sabales-2a0b6386/" class="linked-in" target="_blank">
               <i class="bx bxl-linkedin"></i>
             </a>
-            <a href="https://github.com/gsabales" class="github" target="_blank">
-              <i class="bx bxl-github"></i>
-            </a>
             <a href="https://www.facebook.com/amaterasu09/" class="facebook" target="_blank">
               <i class="bx bxl-facebook"></i>
+            </a>
+            <a href="https://github.com/gsabales" class="github" target="_blank">
+              <i class="bx bxl-github"></i>
             </a>
           </div>
         </div>
@@ -216,46 +216,24 @@
           <div class="container portfolio-section">
             <section class="section-title pt-0">
               <h2>Projects</h2>
-              <p>Here are some of the projects in which I was involved with the development.</p>
+              <p>Here are some of the projects where I participated in actual development.</p>
             </section>
 
             <div class="container">
               <div class="row card-table">
                 <div class="col-md-4">
-                  <button class="card mb-4" data-toggle="modal" data-target="#exampleModal">
-                    <img class="card-img-top project1-img">
+                  <div class="card mb-4 project-card" (click)="openModal('Forge')">
+                    <img class="card-img-top" src="{{projectForge.imageUrl}}">
                     <div class="card-body">
-                      <h5>Project Forge</h5>
-                      <p class="card-text">An AWS instance ticketing system for Globe</p>
+                      <h5>{{projectForge.name}}</h5>
+                      <p class="card-text">{{projectForge.description}}</p>
                     </div>
-
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
       </main>
     </div>
   </div>

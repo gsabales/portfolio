@@ -4,6 +4,9 @@ import {GeneralService} from './services/general.service';
 import {Quote} from './models/Quote';
 import {DOCUMENT} from '@angular/common';
 import {HOME, ABOUT, RESUME, TOGGLED, PORTFOLIO} from './utils/constants';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.component';
+import {Project} from './models/Project';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +19,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   quote: string;
   author: string;
   option: string;
+  projectForge: Project;
 
   @ViewChild('sideMenu') sideMenuRef: ElementRef;
   @ViewChild('home') homeSectionRef: ElementRef;
@@ -32,7 +36,15 @@ export class AppComponent implements OnInit, AfterViewInit{
   portfolioOffset: number = null;
 
   constructor(private generalService: GeneralService,
-              @Inject(DOCUMENT) private document: any) { }
+              private modalService: NgbModal,
+              @Inject(DOCUMENT) private document: any) {
+    this.projectForge = new Project(
+      'Project Forge',
+      'An AWS instance ticketing system',
+      'Project Forge is an AWS instance ticketing system for the developers of a large telecommunications company.',
+      'assets/images/forge-img.png'
+      );
+  }
 
   ngAfterViewInit(): void {
     this.getOffsetTop();
@@ -111,5 +123,15 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   isWithinRange(value: number, minValue: number, maxValue: number): boolean {
     return value >= minValue && value < maxValue;
+  }
+
+  openModal(name: string): void {
+    const modalRef = this.modalService.open(ProjectsModalComponent, {centered: true});
+    if (name === 'Forge') {
+      modalRef.componentInstance.name = this.projectForge.name;
+      modalRef.componentInstance.description =  this.projectForge.description;
+      modalRef.componentInstance.content = this.projectForge.content;
+      modalRef.componentInstance.imageUrl = this.projectForge.imageUrl;
+    }
   }
 }

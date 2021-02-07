@@ -231,11 +231,15 @@
   height: 225px;
   width: 100%;
   display: block;
+  border-radius: 2% 2% 0 0;
 }
 
-.project1-img {
-  background-image: url("https://aatralcreations.com/wp-content/uploads/2020/05/placeholder-1-2.png");
-  background-repeat: round;
+.project-card {
+  border-radius: 2%;
+}
+
+.project-card:hover {
+  cursor: pointer;
 }
 
 .card-table {
