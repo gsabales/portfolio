@@ -33,10 +33,7 @@ export class AppComponent implements OnInit, AfterViewInit{
               @Inject(DOCUMENT) private document: any) { }
 
   ngAfterViewInit(): void {
-    this.homeOffset = this.homeSectionRef.nativeElement.offsetTop;
-    this.aboutOffset = this.aboutSectionRef.nativeElement.offsetTop;
-    this.skillsOffset = this.skillsSectionRef.nativeElement.offsetTop;
-    this.resumeOffset = this.resumeSectionRef.nativeElement.offsetTop;
+    this.getOffsetTop();
   }
 
   ngOnInit(): void {
@@ -52,14 +49,6 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.getGeneratedQuote();
   }
 
-  isNavClicked(): void {
-    this.toggle = !this.toggle;
-    const sideMenuClassList = this.sideMenuRef.nativeElement.classList;
-
-    /* Toggle side bar by adding .toggled class which sets margin to 0. By default, left margin is -20rem. */
-    (sideMenuClassList.contains(TOGGLED)) ? sideMenuClassList.remove(TOGGLED) : sideMenuClassList.add(TOGGLED);
-  }
-
   getGeneratedQuote(): void {
     this.generalService.getRandomQuote().subscribe(quotes => {
         const index = Math.round(Math.random() * 1643);
@@ -69,8 +58,26 @@ export class AppComponent implements OnInit, AfterViewInit{
     );
   }
 
-  isActive(option: string): string {
-    return (this.currentActive === option) ? 'active' : '';
+  getOffsetTop(): void {
+    this.homeOffset = this.homeSectionRef.nativeElement.offsetTop;
+    this.aboutOffset = this.aboutSectionRef.nativeElement.offsetTop;
+    this.skillsOffset = this.skillsSectionRef.nativeElement.offsetTop;
+    this.resumeOffset = this.resumeSectionRef.nativeElement.offsetTop;
+  }
+
+  toggleSideMenu(): void {
+    this.toggle = !this.toggle;
+    const sideMenuClassList = this.sideMenuRef.nativeElement.classList;
+
+    /* Toggle side bar by adding .toggled class which sets margin to 0. By default, left margin is -20rem. */
+    (sideMenuClassList.contains(TOGGLED)) ? sideMenuClassList.remove(TOGGLED) : sideMenuClassList.add(TOGGLED);
+  }
+
+  menuClicked(): void {
+    /* If window width is less than 1200px, sidebar should be collapsable upon clicking menu items*/
+    if (window.innerWidth < 1200) {
+      this.toggleSideMenu();
+    }
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -84,7 +91,13 @@ export class AppComponent implements OnInit, AfterViewInit{
     }
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    /* Get offsetTop of each section dynamically upon resize to match mobile and desktop active items*/
+    this.getOffsetTop();
+  }
+
   isWithinRange(value: number, minValue: number, maxValue: number): boolean {
-    return value >= minValue && value <= maxValue;
+    return value >= minValue && value < maxValue;
   }
 }
