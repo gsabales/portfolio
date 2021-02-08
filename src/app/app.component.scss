@@ -207,6 +207,7 @@
   height: 100%;
 }
 
+/* Portfolio Section */
 .portfolio-section {
   z-index: 1;
 }
@@ -216,6 +217,26 @@
   width: 100%;
   display: block;
   border-radius: 2% 2% 0 0;
+}
+
+.portfolio-bg {
+  height: 100vh;
+  width: 100%;
+  display: table;
+  position: relative;
+  background: url("../assets/images/portfolio-bg.jpg") bottom right;
+  background-size: cover;
+}
+
+@media (min-width: 480px) {
+  .portfolio-bg {
+    background-attachment: fixed;
+  }
+}
+
+.portfolio-section .section-title h2,
+.portfolio-section .section-title p {
+  color: whitesmoke;
 }
 
 .project-card {
