@@ -20,6 +20,8 @@ export class AppComponent implements OnInit, AfterViewInit{
   author: string;
   option: string;
   projectForge: Project;
+  projectOccupy: Project;
+  healthNow: Project;
 
   @ViewChild('sideMenu') sideMenuRef: ElementRef;
   @ViewChild('home') homeSectionRef: ElementRef;
@@ -40,10 +42,25 @@ export class AppComponent implements OnInit, AfterViewInit{
               @Inject(DOCUMENT) private document: any) {
     this.projectForge = new Project(
       'Project Forge',
-      'An AWS instance ticketing system',
-      'Project Forge is an AWS instance ticketing system for the developers of a large telecommunications company.',
+      'AWS Instance Ticketing System',
+      'An AWS instance ticketing system for a large telecommunications company. ' +
+      'This is my first project as a developer where I learned most the fundamentals of web development and microservices.',
       'assets/images/forge-img.png'
       );
+    this.projectOccupy = new Project(
+      'Project Occupy',
+      'Desk Reservation System',
+      'An internal desk reservation system project built in Angular and Springboot. This is where I honed my front-end ' +
+      'development skills since this is project is UI/UX intensive.',
+      'assets/images/occupy-img.png'
+    );
+    this.healthNow = new Project(
+      'HealthNow + KMD Integration',
+      'KonsultaMD API integration with HealthNow',
+      'The goal of this project is to enable HealthNow to access the video conference services of KonsultaMD. This is where ' +
+      'I learned API communication concepts such as OAuth2, JWT and FeignClient.',
+      'assets/images/konsulta-md.png'
+    );
   }
 
   ngAfterViewInit(): void {
@@ -133,6 +150,16 @@ export class AppComponent implements OnInit, AfterViewInit{
       modalRef.componentInstance.description =  this.projectForge.description;
       modalRef.componentInstance.content = this.projectForge.content;
       modalRef.componentInstance.imageUrl = this.projectForge.imageUrl;
+    } else if (name === 'Occupy') {
+      modalRef.componentInstance.name = this.projectOccupy.name;
+      modalRef.componentInstance.description =  this.projectOccupy.description;
+      modalRef.componentInstance.content = this.projectOccupy.content;
+      modalRef.componentInstance.imageUrl = this.projectOccupy.imageUrl;
+    } else if (name === 'HealthNow') {
+      modalRef.componentInstance.name = this.healthNow.name;
+      modalRef.componentInstance.description =  this.healthNow.description;
+      modalRef.componentInstance.content = this.healthNow.content;
+      modalRef.componentInstance.imageUrl = this.healthNow.imageUrl;
     }
   }
 }

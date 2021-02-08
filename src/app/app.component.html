@@ -212,7 +212,7 @@
         </section>
 
         <!-- Portfolio Section-->
-        <section #portfolio id="portfolio" class="bg-section section-bg">
+        <section #portfolio id="portfolio" class="section-bg">
           <div class="container portfolio-section">
             <section class="section-title pt-0">
               <h2>Projects</h2>
@@ -221,12 +221,33 @@
 
             <div class="container">
               <div class="row card-table">
-                <div class="col-md-4">
+                <!-- Project Forge -->
+                <div class="col-lg-4">
                   <div class="card mb-4 project-card" (click)="openModal('Forge')">
                     <img class="card-img-top" src="{{projectForge.imageUrl}}">
                     <div class="card-body">
                       <h5>{{projectForge.name}}</h5>
                       <p class="card-text">{{projectForge.description}}</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Project Occupy -->
+                <div class="col-lg-4">
+                  <div class="card mb-4 project-card" (click)="openModal('Occupy')">
+                    <img class="card-img-top" src="{{projectOccupy.imageUrl}}">
+                    <div class="card-body">
+                      <h5>{{projectOccupy.name}}</h5>
+                      <p class="card-text">{{projectOccupy.description}}</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- HealthNow -->
+                <div class="col-lg-4">
+                  <div class="card mb-4 project-card" (click)="openModal('HealthNow')">
+                    <img class="card-img-top" src="{{healthNow.imageUrl}}">
+                    <div class="card-body">
+                      <h5>{{healthNow.name}}</h5>
+                      <p class="card-text">{{healthNow.description}}</p>
                     </div>
                   </div>
                 </div>
