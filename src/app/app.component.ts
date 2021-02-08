@@ -99,6 +99,7 @@ export class AppComponent implements OnInit, AfterViewInit{
     const sideMenuClassList = this.sideMenuRef.nativeElement.classList;
     if (window.innerWidth < 1200 && sideMenuClassList.contains(TOGGLED)) {
       sideMenuClassList.remove(TOGGLED);
+      this.toggle = false;
     }
   }
 
