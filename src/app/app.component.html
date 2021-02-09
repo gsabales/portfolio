@@ -31,7 +31,7 @@
           <li [ngClass]="{'active': currentActive === 'about' }"><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
           <li [ngClass]="{'active': currentActive === 'resume' }"><a href="#resume"><i class="bx bx-file-blank"></i><span>Resume</span></a></li>
           <li [ngClass]="{'active': currentActive === 'portfolio' }"><a href="#portfolio"><i class="bx bx-book-content"></i>Projects</a></li>
-          <li><a href="#services"><i class="bx bx-server"></i>Services</a></li>
+          <li [ngClass]="{'active': currentActive === 'services' }"><a href="#services"><i class="bx bx-server"></i>Tech Stack</a></li>
           <li><a href="#contact"><i class="bx bx-envelope"></i>Contact</a></li>
         </nav>
       </div>
@@ -212,7 +212,7 @@
         </section>
 
         <!-- Portfolio Section-->
-        <section #portfolio id="portfolio" class="portfolio-bg">
+        <section #portfolio id="portfolio" class="portfolio-bg pb-0">
           <div class="container portfolio-section">
             <section class="section-title pt-0">
               <h2>Projects</h2>
@@ -251,6 +251,55 @@
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Services Section-->
+        <section #services id="services" class="services section-bg ">
+          <div class="container services-section">
+            <section class="section-title pt-0">
+              <h2>Tech Stack</h2>
+              <p>Here are some of the frameworks and tools I'm accustomed to use for web development</p>
+            </section>
+
+            <div class="row">
+              <div class="col-lg-4 col-md-6 icon-box">
+                <div class="icon"><i class="icofont-leaf"></i></div>
+                <h4 class="title">Spring Boot</h4>
+                <p class="description">I prefer to use Spring Boot since most of the backend portion of
+                web applications I have worked on were built using this Java framework</p>
+              </div>
+              <div class="col-lg-4 col-md-6 icon-box">
+                <div class="icon"><i class="icofont-shield"></i></div>
+                <h4 class="title">Angular</h4>
+                <p class="description">For frontend development, I prefer to use Angular framework
+                  since I like how Typescript enforces strongly-typed data values</p>
+              </div>
+              <div class="col-lg-4 col-md-6 icon-box">
+                <div class="icon"><i class="icofont-database"></i></div>
+                <h4 class="title">MySQL/PostgreSQL</h4>
+                <p class="description">I have used relational databases such as MySQL and PostgreSQL, but I'm more inclined to use
+                MySQL and its UI tool MySQL Workbench</p>
+              </div>
+              <div class="col-lg-4 col-md-6 icon-box">
+                <div class="icon"><i class="icofont-github"></i></div>
+                <h4 class="title">Github/Gitlab/Bitbucket</h4>
+                <p class="description">Git is widely used nowadays for version control and I use this as well. For code repositories,
+                  I use Github for my side projects and Gitlab/Bitbucket for company projects</p>
+              </div>
+              <div class="col-lg-4 col-md-6 icon-box">
+                <div class="icon"><i class="icofont-bootstrap"></i></div>
+                <h4 class="title">Bootstrap</h4>
+                <p class="description">Bootstrap's grid layout and flex properties helped me a lot in a UI/UX perspective. Until now,
+                I consider this UI/UX library a life-saver</p>
+              </div>
+              <div class="col-lg-4 col-md-6 icon-box">
+                <div class="icon"><i class="icofont-exchange"></i></div>
+                <h4 class="title">Postman</h4>
+                <p class="description">Postman is a fundamental tool for creating and testing APIs. I primarily use this as well
+                for API-level development</p>
               </div>
             </div>
           </div>
