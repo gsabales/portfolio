@@ -21,3 +21,6 @@
   font-family: "Raleway";
   src: local("Raleway"), url("assets/fonts/Raleway-Bold.ttf") format("truetype");
 }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

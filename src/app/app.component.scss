@@ -7,10 +7,10 @@
   position: relative;
   background: url("../assets/images/stock-photo2.jpg") bottom right;
   background-size: cover;
-
 }
 
-// ::before is called pseudo-element. This inserts a content before the actual content of the element
+/* ::before is called pseudo-element. This inserts a content before the actual content of the element.
+  This is for the blur effect */
 .bg-section::before {
   content: "";
   top: 0;
@@ -202,13 +202,55 @@
 }
 /* End of Main Section*/
 
-/* About Section */
-
 .about-img {
   width: 100%;
   height: 100%;
 }
 
-/* End of About Section*/
+/* Portfolio Section */
+.portfolio-section {
+  z-index: 1;
+}
 
+.portfolio-section img {
+  height: 225px;
+  width: 100%;
+  display: block;
+  border-radius: 2% 2% 0 0;
+}
 
+.portfolio-bg {
+  height: 100vh;
+  width: 100%;
+  display: table;
+  position: relative;
+  background: url("../assets/images/portfolio-bg.jpg") bottom right;
+  background-size: cover;
+}
+
+@media (min-width: 480px) {
+  .portfolio-bg {
+    background-attachment: fixed;
+  }
+}
+
+.portfolio-section .section-title h2,
+.portfolio-section .section-title p {
+  color: whitesmoke;
+}
+
+.project-card {
+  border-radius: 2%;
+}
+
+.project-card:hover {
+  cursor: pointer;
+}
+
+.card-table {
+  font-size: smaller;
+}
+
+.card-body h5 {
+  color: #173b6c;
+}

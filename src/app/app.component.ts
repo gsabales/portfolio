@@ -3,7 +3,10 @@ import Typed from 'typed.js';
 import {GeneralService} from './services/general.service';
 import {Quote} from './models/Quote';
 import {DOCUMENT} from '@angular/common';
-import {HOME, ABOUT, RESUME, TOGGLED} from './utils/constants';
+import {HOME, ABOUT, RESUME, TOGGLED, PORTFOLIO} from './utils/constants';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.component';
+import {Project} from './models/Project';
 
 @Component({
   selector: 'app-root',
@@ -16,21 +19,49 @@ export class AppComponent implements OnInit, AfterViewInit{
   quote: string;
   author: string;
   option: string;
+  projectForge: Project;
+  projectOccupy: Project;
+  healthNow: Project;
 
   @ViewChild('sideMenu') sideMenuRef: ElementRef;
   @ViewChild('home') homeSectionRef: ElementRef;
   @ViewChild('about') aboutSectionRef: ElementRef;
   @ViewChild('skills') skillsSectionRef: ElementRef;
   @ViewChild('resume') resumeSectionRef: ElementRef;
+  @ViewChild('portfolio') portfolioSectionRef: ElementRef;
 
   currentActive = 'home';
   homeOffset: number = null;
   aboutOffset: number = null;
   skillsOffset: number = null;
   resumeOffset: number = null;
+  portfolioOffset: number = null;
 
   constructor(private generalService: GeneralService,
-              @Inject(DOCUMENT) private document: any) { }
+              private modalService: NgbModal,
+              @Inject(DOCUMENT) private document: any) {
+    this.projectForge = new Project(
+      'Project Forge',
+      'AWS Instance Ticketing System',
+      'An AWS instance ticketing system for a large telecommunications company. ' +
+      'This is my first project as a developer where I learned most the fundamentals of web development and microservices.',
+      'assets/images/forge-img.png'
+      );
+    this.projectOccupy = new Project(
+      'Project Occupy',
+      'Desk Reservation System',
+      'An internal desk reservation system project built in Angular and Springboot. This is where I honed my front-end ' +
+      'development skills since this is project is UI/UX intensive.',
+      'assets/images/occupy-img.png'
+    );
+    this.healthNow = new Project(
+      'HealthNow + KMD Integration',
+      'KonsultaMD API integration with HealthNow',
+      'The goal of this project is to enable HealthNow to access the video conference services of KonsultaMD. This is where ' +
+      'I learned API communication concepts such as OAuth2, JWT and FeignClient.',
+      'assets/images/konsulta-md.png'
+    );
+  }
 
   ngAfterViewInit(): void {
     this.getOffsetTop();
@@ -63,6 +94,7 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.aboutOffset = this.aboutSectionRef.nativeElement.offsetTop;
     this.skillsOffset = this.skillsSectionRef.nativeElement.offsetTop;
     this.resumeOffset = this.resumeSectionRef.nativeElement.offsetTop;
+    this.portfolioOffset = this.portfolioSectionRef.nativeElement.offsetTop;
   }
 
   toggleSideMenu(): void {
@@ -73,10 +105,18 @@ export class AppComponent implements OnInit, AfterViewInit{
     (sideMenuClassList.contains(TOGGLED)) ? sideMenuClassList.remove(TOGGLED) : sideMenuClassList.add(TOGGLED);
   }
 
-  menuClicked(): void {
+  toggleMenuIfClicked(): void {
     /* If window width is less than 1200px, sidebar should be collapsable upon clicking menu items*/
     if (window.innerWidth < 1200) {
       this.toggleSideMenu();
+    }
+  }
+
+  collapseMenu(): void {
+    const sideMenuClassList = this.sideMenuRef.nativeElement.classList;
+    if (window.innerWidth < 1200 && sideMenuClassList.contains(TOGGLED)) {
+      sideMenuClassList.remove(TOGGLED);
+      this.toggle = false;
     }
   }
 
@@ -86,8 +126,10 @@ export class AppComponent implements OnInit, AfterViewInit{
       this.currentActive = HOME;
     } else if (this.isWithinRange(window.pageYOffset, this.aboutOffset, this.resumeOffset)) {
       this.currentActive = ABOUT;
-    } else if (window.pageYOffset >= this.resumeOffset) {
+    } else if (this.isWithinRange(window.pageYOffset, this.resumeOffset, this.portfolioOffset)) {
       this.currentActive = RESUME;
+    } else if (window.pageYOffset >= this.portfolioOffset) {
+      this.currentActive = PORTFOLIO;
     }
   }
 
@@ -99,5 +141,25 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   isWithinRange(value: number, minValue: number, maxValue: number): boolean {
     return value >= minValue && value < maxValue;
+  }
+
+  openModal(name: string): void {
+    const modalRef = this.modalService.open(ProjectsModalComponent, {centered: true});
+    if (name === 'Forge') {
+      modalRef.componentInstance.name = this.projectForge.name;
+      modalRef.componentInstance.description =  this.projectForge.description;
+      modalRef.componentInstance.content = this.projectForge.content;
+      modalRef.componentInstance.imageUrl = this.projectForge.imageUrl;
+    } else if (name === 'Occupy') {
+      modalRef.componentInstance.name = this.projectOccupy.name;
+      modalRef.componentInstance.description =  this.projectOccupy.description;
+      modalRef.componentInstance.content = this.projectOccupy.content;
+      modalRef.componentInstance.imageUrl = this.projectOccupy.imageUrl;
+    } else if (name === 'HealthNow') {
+      modalRef.componentInstance.name = this.healthNow.name;
+      modalRef.componentInstance.description =  this.healthNow.description;
+      modalRef.componentInstance.content = this.healthNow.content;
+      modalRef.componentInstance.imageUrl = this.healthNow.imageUrl;
+    }
   }
 }
