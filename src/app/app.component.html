@@ -39,8 +39,8 @@
       <!-- Background Image -->
       <section #home id="home" class="bg-section flex-column justify-content-center align-items-center">
         <div class="bg-container">
-          <h1>Glenn Sabales</h1>
-          <p>I'm <span id="typed"></span></p>
+          <h1 class="fadeInLeft">Glenn Sabales</h1>
+          <p class="fadeInRight">I'm <span id="typed"></span></p>
         </div>
       </section>
 
@@ -56,12 +56,12 @@
             </div>
 
             <div class="row">
-              <div class="col-lg-4">
+              <div class="col-lg-4" data-aos="fade-in-out-left">
                 <img src="assets/images/profile-pic.jpg" class="about-img" alt=""/>
               </div>
-              <div class="col-lg-8 pt-4 pt-lg-0 content">
+              <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-in-out-right">
                 <h3>My Profile</h3>
-                <p class="font-italic">"{{quote}}" - {{author}}</p>
+                <p class="font-italic" data-aos="fade-in-left-slow">"{{quote}}" - {{author}}</p>
                 <div class="row">
                   <div class="col-lg-6">
                     <ul>

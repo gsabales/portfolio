@@ -7,6 +7,7 @@ import {HOME, ABOUT, RESUME, TOGGLED, PORTFOLIO, SERVICES} from './utils/constan
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.component';
 import {Project} from './models/Project';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-root',
@@ -70,6 +71,9 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit(): void {
+    // Initialize aos css library
+    AOS.init();
+
     this.toggle = false;
     const typed = new Typed('#typed', {
       strings: ['a Developer', 'a Learner', 'an Anime Lover'],

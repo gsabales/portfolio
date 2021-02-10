@@ -1,0 +1,118 @@
+/* Animation Styles */
+
+.fadeInLeft {
+  animation-delay: 0.5s;
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeInLeft;
+}
+
+.fadeInRight {
+  animation-delay: 0.75s;
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeInRight;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+@keyframes fadeInBounceLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+@keyframes fadeInBounceRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+[data-aos="fade-in-out-left"] {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeOutLeft;
+  &.aos-animate {
+    animation-delay: 0.25s;
+    animation-name: fadeInBounceLeft;
+   }
+}
+
+[data-aos="fade-in-out-right"] {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeOutRight;
+  &.aos-animate {
+    animation-delay: 0.25s;
+    animation-name: fadeInBounceRight;
+  }
+}
+
+[data-aos="fade-in-left-slow"] {
+  visibility: hidden;
+  &.aos-animate {
+    visibility: visible;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-delay: 1s;
+    animation-name: fadeInLeft;
+  }
+}
