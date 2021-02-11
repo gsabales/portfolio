@@ -1,17 +1,12 @@
 /* Animation Styles */
 
+/* FADE LEFT */
+
 .fadeInLeft {
   animation-delay: 0.5s;
   animation-duration: 0.75s;
   animation-fill-mode: both;
   animation-name: fadeInLeft;
-}
-
-.fadeInRight {
-  animation-delay: 0.75s;
-  animation-duration: 0.75s;
-  animation-fill-mode: both;
-  animation-name: fadeInRight;
 }
 
 @keyframes fadeInLeft {
@@ -50,6 +45,15 @@
   }
 }
 
+/* FADE RIGHT */
+
+.fadeInRight {
+  animation-delay: 0.75s;
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeInRight;
+}
+
 @keyframes fadeInRight {
   from {
     opacity: 0;
@@ -86,6 +90,34 @@
   }
 }
 
+/* FADE UP*/
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes fadeInBounceUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ANIMATE ON*/
+
 [data-aos="fade-in-out-left"] {
   animation-duration: 0.75s;
   animation-fill-mode: both;
@@ -116,3 +148,25 @@
     animation-name: fadeInLeft;
   }
 }
+
+[data-aos="fade-in-out-up1"] {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeOutUp;
+  &.aos-animate {
+    //animation-delay: 0.25s;
+    animation-name: fadeInBounceUp;
+  }
+}
+
+[data-aos="fade-in-out-up2"] {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeOutUp;
+  &.aos-animate {
+    animation-delay: 0.25s;
+    animation-name: fadeInBounceUp;
+  }
+}
+
+
