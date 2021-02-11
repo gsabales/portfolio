@@ -3,7 +3,7 @@ import Typed from 'typed.js';
 import {GeneralService} from './services/general.service';
 import {Quote} from './models/Quote';
 import {DOCUMENT} from '@angular/common';
-import {HOME, ABOUT, RESUME, TOGGLED, PORTFOLIO} from './utils/constants';
+import {HOME, ABOUT, RESUME, TOGGLED, PORTFOLIO, SERVICES} from './utils/constants';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.component';
 import {Project} from './models/Project';
@@ -29,6 +29,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   @ViewChild('skills') skillsSectionRef: ElementRef;
   @ViewChild('resume') resumeSectionRef: ElementRef;
   @ViewChild('portfolio') portfolioSectionRef: ElementRef;
+  @ViewChild('services') servicesSectionRef: ElementRef;
 
   currentActive = 'home';
   homeOffset: number = null;
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   skillsOffset: number = null;
   resumeOffset: number = null;
   portfolioOffset: number = null;
+  servicesOffset: number = null;
 
   constructor(private generalService: GeneralService,
               private modalService: NgbModal,
@@ -57,7 +59,7 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.healthNow = new Project(
       'HealthNow + KMD Integration',
       'KonsultaMD API integration with HealthNow',
-      'The goal of this project is to enable HealthNow to access the video conference services of KonsultaMD. This is where ' +
+      'Enabled HealthNow to access the video conference services of KonsultaMD through API integration. This is where ' +
       'I learned API communication concepts such as OAuth2, JWT and FeignClient.',
       'assets/images/konsulta-md.png'
     );
@@ -95,6 +97,7 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.skillsOffset = this.skillsSectionRef.nativeElement.offsetTop;
     this.resumeOffset = this.resumeSectionRef.nativeElement.offsetTop;
     this.portfolioOffset = this.portfolioSectionRef.nativeElement.offsetTop;
+    this.servicesOffset = this.servicesSectionRef.nativeElement.offsetTop;
   }
 
   toggleSideMenu(): void {
@@ -128,8 +131,10 @@ export class AppComponent implements OnInit, AfterViewInit{
       this.currentActive = ABOUT;
     } else if (this.isWithinRange(window.pageYOffset, this.resumeOffset, this.portfolioOffset)) {
       this.currentActive = RESUME;
-    } else if (window.pageYOffset >= this.portfolioOffset) {
-      this.currentActive = PORTFOLIO;
+    } else if (this.isWithinRange(window.pageYOffset, this.portfolioOffset, this.servicesOffset)) {
+      this.currentActive = PORTFOLIO
+    } else if (window.pageYOffset >= this.servicesOffset) {
+      this.currentActive = SERVICES;
     }
   }
 
