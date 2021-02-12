@@ -1,0 +1,352 @@
+/* Animation Styles */
+
+/* FADE LEFT */
+
+.fadeInLeft {
+  animation-delay: 0.5s;
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeInLeft;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+@keyframes fadeInBounceLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* FADE RIGHT */
+
+.fadeInRight {
+  animation-delay: 0.75s;
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeInRight;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+@keyframes fadeInBounceRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* FADE UP*/
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes fadeInBounceUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ANIMATE ON SCROLL */
+
+[data-aos="fade-in-out-left"] {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeOutLeft;
+  &.aos-animate {
+    animation-delay: 0.25s;
+    animation-name: fadeInBounceLeft;
+   }
+}
+
+[data-aos="fade-in-out-right"] {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeOutRight;
+  &.aos-animate {
+    animation-delay: 0.25s;
+    animation-name: fadeInBounceRight;
+  }
+}
+
+[data-aos="fade-in-left-slow"] {
+  visibility: hidden;
+  &.aos-animate {
+    visibility: visible;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-delay: 1s;
+    animation-name: fadeInLeft;
+  }
+}
+
+[data-aos="fade-in-out-up1"] {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeOutUp;
+  &.aos-animate {
+    animation-delay: 0.5s;
+    animation-name: fadeInBounceUp;
+  }
+}
+
+[data-aos="fade-in-out-up2"] {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeOutUp;
+  &.aos-animate {
+    animation-delay: 0.65s;
+    animation-name: fadeInBounceUp;
+  }
+}
+
+/* PROGRESS BAR */
+
+[data-aos="progress-bar-1"]{
+  &.aos-animate {
+    animation: progressBar1 0.75s ease-in-out;
+    animation-fill-mode: both;
+    animation-delay: 0.9s;
+  }
+}
+
+[data-aos="progress-bar-1"]{
+  &.aos-animate {
+    animation: progressBar1 0.75s ease-in-out;
+    animation-fill-mode: both;
+    animation-delay: 0.9s;
+  }
+}
+
+@keyframes progressBar1 {
+  0% { width: 0; }
+  100% { width: 80%; }
+}
+
+[data-aos="progress-bar-2"]{
+  &.aos-animate {
+    animation: progressBar2 0.75s ease-in-out;
+    animation-fill-mode: both;
+    animation-delay: 0.9s;
+  }
+}
+
+@keyframes progressBar2 {
+  0% { width: 0; }
+  100% { width: 75%; }
+}
+
+[data-aos="progress-bar-3"]{
+  &.aos-animate {
+    animation: progressBar3 0.75s ease-in-out;
+    animation-fill-mode: both;
+    animation-delay: 0.9s;
+  }
+}
+
+@keyframes progressBar3 {
+  0% { width: 0; }
+  100% { width: 80%; }
+}
+
+[data-aos="progress-bar-4"]{
+  &.aos-animate {
+    animation: progressBar4 0.75s ease-in-out;
+    animation-fill-mode: both;
+    animation-delay: 0.9s;
+  }
+}
+
+@keyframes progressBar4 {
+  0% { width: 0; }
+  100% { width: 75%; }
+}
+
+[data-aos="progress-bar-5"]{
+  &.aos-animate {
+    animation: progressBar5 0.75s ease-in-out;
+    animation-fill-mode: both;
+    animation-delay: 0.9s;
+  }
+}
+
+@keyframes progressBar5 {
+  0% { width: 0; }
+  100% { width: 65%; }
+}
+
+[data-aos="progress-bar-6"]{
+  &.aos-animate {
+    animation: progressBar6 0.75s ease-in-out;
+    animation-fill-mode: both;
+    animation-delay: 0.9s;
+  }
+}
+
+@keyframes progressBar6 {
+  0% { width: 0; }
+  100% { width: 70%; }
+}
+
+/* PORTFOLIO ANIMATIONS */
+
+[data-aos="fade-in-left-1"],
+[data-aos="fade-in-left-2"],
+[data-aos="fade-in-left-3"] {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeOutUp;
+  &.aos-animate {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: appearFromLeft;
+  }
+}
+
+[data-aos="fade-in-left-1"] {
+  &.aos-animate {
+    animation-delay: 0.5s;
+  }
+}
+
+[data-aos="fade-in-left-2"] {
+  &.aos-animate {
+    animation-delay: 0.65s;
+  }
+}
+
+[data-aos="fade-in-left-3"] {
+  &.aos-animate {
+    animation-delay: 0.75s;
+  }
+}
+
+@keyframes appearFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+[data-aos="fade-in-right-1"],
+[data-aos="fade-in-right-2"],
+[data-aos="fade-in-right-3"] {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-name: fadeOutUp;
+  &.aos-animate {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: appearFromRight;
+  }
+}
+
+[data-aos="fade-in-right-1"] {
+  &.aos-animate {
+    animation-delay: 0.85s;
+  }
+}
+
+[data-aos="fade-in-right-2"] {
+  &.aos-animate {
+    animation-delay: 0.95s;
+  }
+}
+
+[data-aos="fade-in-right-3"] {
+  &.aos-animate {
+    animation-delay: 1s;
+  }
+}
+
+@keyframes appearFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.project-card {
+  transition: transform .3s;
+}
+
+.project-card:hover {
+  transform: scale(1.1);
+}
