@@ -53,8 +53,8 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.projectOccupy = new Project(
       'Project Occupy',
       'Desk Reservation System',
-      'An internal desk reservation system project built in Angular and Springboot. This is where I honed my front-end ' +
-      'development skills since this is project is UI/UX intensive.',
+      'An internal desk reservation system project built in Angular and Springboot. This is where I practiced my front-end ' +
+      'development skills since this application is UI/UX intensive.',
       'assets/images/occupy-img.png'
     );
     this.healthNow = new Project(
