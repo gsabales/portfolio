@@ -31,6 +31,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   @ViewChild('resume') resumeSectionRef: ElementRef;
   @ViewChild('portfolio') portfolioSectionRef: ElementRef;
   @ViewChild('services') servicesSectionRef: ElementRef;
+  @ViewChild('backToTop') backToTopRef: ElementRef;
 
   currentActive = 'home';
   homeOffset: number = null;
@@ -67,6 +68,9 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   ngAfterViewInit(): void {
+    // Hide back-to-top button on page load
+    this.backToTopRef.nativeElement.hidden = true;
+
     this.getOffsetTop();
   }
 
@@ -139,6 +143,14 @@ export class AppComponent implements OnInit, AfterViewInit{
       this.currentActive = PORTFOLIO
     } else if (window.pageYOffset >= this.servicesOffset) {
       this.currentActive = SERVICES;
+    }
+
+    // Toggle back-to-top button display on scroll. On first scroll, un-hide the button already to apply animations.
+    if (window.pageYOffset > 50) {
+      this.backToTopRef.nativeElement.hidden = false;
+      this.backToTopRef.nativeElement.classList.add('display-button');
+    } else {
+      this.backToTopRef.nativeElement.classList.remove('display-button');
     }
   }
 
