@@ -3,11 +3,12 @@ import Typed from 'typed.js';
 import {GeneralService} from './services/general.service';
 import {Quote} from './models/Quote';
 import {DOCUMENT} from '@angular/common';
-import {HOME, ABOUT, RESUME, TOGGLED, PORTFOLIO, SERVICES} from './utils/constants';
+import {HOME, ABOUT, RESUME, TOGGLED, PORTFOLIO, SERVICES, CONTACT} from './utils/constants';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.component';
 import {Project} from './models/Project';
 import * as AOS from 'aos';
+import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -31,6 +32,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   @ViewChild('resume') resumeSectionRef: ElementRef;
   @ViewChild('portfolio') portfolioSectionRef: ElementRef;
   @ViewChild('services') servicesSectionRef: ElementRef;
+  @ViewChild('contact') contactSectionRef: ElementRef;
   @ViewChild('backToTop') backToTopRef: ElementRef;
 
   currentActive = 'home';
@@ -40,9 +42,20 @@ export class AppComponent implements OnInit, AfterViewInit{
   resumeOffset: number = null;
   portfolioOffset: number = null;
   servicesOffset: number = null;
+  contactOffset: number = null;
+
+  emailFormGroup = this.fb.group({
+      name: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      subject: [null, Validators.required],
+      message: [null, Validators.required]
+    }
+  );
+
 
   constructor(private generalService: GeneralService,
               private modalService: NgbModal,
+              private fb: FormBuilder,
               @Inject(DOCUMENT) private document: any) {
     this.projectForge = new Project(
       'Project Forge',
@@ -106,6 +119,7 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.resumeOffset = this.resumeSectionRef.nativeElement.offsetTop;
     this.portfolioOffset = this.portfolioSectionRef.nativeElement.offsetTop;
     this.servicesOffset = this.servicesSectionRef.nativeElement.offsetTop;
+    this.contactOffset = this.contactSectionRef.nativeElement.offsetTop;
   }
 
   toggleSideMenu(): void {
@@ -140,9 +154,11 @@ export class AppComponent implements OnInit, AfterViewInit{
     } else if (this.isWithinRange(window.pageYOffset, this.resumeOffset, this.portfolioOffset)) {
       this.currentActive = RESUME;
     } else if (this.isWithinRange(window.pageYOffset, this.portfolioOffset, this.servicesOffset)) {
-      this.currentActive = PORTFOLIO
-    } else if (window.pageYOffset >= this.servicesOffset) {
+      this.currentActive = PORTFOLIO;
+    } else if (this.isWithinRange(window.pageYOffset, this.servicesOffset, this.contactOffset)) {
       this.currentActive = SERVICES;
+    } else if (window.pageYOffset >= this.contactOffset) {
+      this.currentActive = CONTACT;
     }
 
     // Toggle back-to-top button display on scroll. On first scroll, un-hide the button already to apply animations.
