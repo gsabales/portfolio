@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, HostListener, Inject, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Host, HostListener, Inject, OnInit, ViewChild} from '@angular/core';
 import Typed from 'typed.js';
 import {GeneralService} from './services/general.service';
 import {Quote} from './models/Quote';
@@ -8,7 +8,10 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.component';
 import {Project} from './models/Project';
 import * as AOS from 'aos';
+import {Email} from '../assets/js/smtp.js';
+// declare let Email: any;
 import {FormBuilder, Validators} from '@angular/forms';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -44,6 +47,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   servicesOffset: number = null;
   contactOffset: number = null;
 
+  emailSuccess: string = null;
   emailFormGroup = this.fb.group({
       name: [null, [Validators.required, Validators.minLength(4)]],
       email: [null, [Validators.required, Validators.email]],
@@ -205,9 +209,25 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   sendEmail(): void {
-    console.log('Name: ' + this.emailFormGroup.get('name').value);
-    console.log('Email: ' + this.emailFormGroup.get('email').value);
-    console.log('Subject: ' + this.emailFormGroup.get('subject').value);
-    console.log('Message: ' + this.emailFormGroup.get('message').value);
+    Email.send({
+      Host: environment.host,
+      Username: environment.username,
+      Password: environment.elastic_mail_password,
+      To: environment.username,
+      From: this.emailFormGroup.get('email').value,
+      Subject: this.emailFormGroup.get('subject').value,
+      Body: `
+            <b>Name: </b>${this.emailFormGroup.get('name').value} <br/>
+            <b>Email: </b>${this.emailFormGroup.get('email').value}<br />
+            <b>Subject: </b>${this.emailFormGroup.get('subject').value}<br />
+            <b>Message:</b> <br /> ${this.emailFormGroup.get('message').value} <br><br>
+            <i>This is sent as a feedback from my portfolio page</i><br/><br/>
+            <b>~End of Message.~</b>`
+    }).then(message => {
+      this.emailSuccess = 'Your email has been sent. Thank you for your feedback!';
+      setTimeout(() => this.emailSuccess = null, 2500);
+      this.emailFormGroup.reset();
+    });
   }
-}
+
+  }

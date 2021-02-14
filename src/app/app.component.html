@@ -396,8 +396,10 @@
                     </div>
                   </div>
 
-
-                  <div class="text-center"><button type="submit" (click)="sendEmail()">Send Message</button></div>
+                  <div *ngIf="!!emailSuccess" class="alert alert-success" [innerHTML]="this.emailSuccess"></div>
+                  <div class="text-center">
+                    <button type="submit" [disabled]="!this.emailFormGroup.valid" [ngClass]="{'disabled':!this.emailFormGroup.valid}"
+                            (click)="sendEmail()">Send Message</button></div>
 
                 </form>
               </div>
