@@ -45,9 +45,9 @@ export class AppComponent implements OnInit, AfterViewInit{
   contactOffset: number = null;
 
   emailFormGroup = this.fb.group({
-      name: [null, Validators.required],
+      name: [null, [Validators.required, Validators.minLength(4)]],
       email: [null, [Validators.required, Validators.email]],
-      subject: [null, Validators.required],
+      subject: [null, [Validators.required, Validators.minLength(8)]],
       message: [null, Validators.required]
     }
   );
@@ -198,5 +198,16 @@ export class AppComponent implements OnInit, AfterViewInit{
       modalRef.componentInstance.content = this.healthNow.content;
       modalRef.componentInstance.imageUrl = this.healthNow.imageUrl;
     }
+  }
+
+  validateFormControl(fcName: string): boolean {
+    return this.emailFormGroup.get(fcName).invalid && (this.emailFormGroup.get(fcName).dirty || this.emailFormGroup.get(fcName).touched);
+  }
+
+  sendEmail(): void {
+    console.log('Name: ' + this.emailFormGroup.get('name').value);
+    console.log('Email: ' + this.emailFormGroup.get('email').value);
+    console.log('Subject: ' + this.emailFormGroup.get('subject').value);
+    console.log('Message: ' + this.emailFormGroup.get('message').value);
   }
 }
