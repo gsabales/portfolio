@@ -1,9 +1,11 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
 export const environment = {
-  production: false
+  production: false,
+  host: 'smtp25.elasticemail.com',
+  username: 'glenn.sabales@gmail.com',
+  elastic_mail_password: 'D698E436174934E1A896493CA7CBC3FEF632'
 };
 
 /*

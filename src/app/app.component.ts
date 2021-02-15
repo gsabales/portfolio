@@ -1,13 +1,17 @@
-import {AfterViewInit, Component, ElementRef, HostListener, Inject, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Host, HostListener, Inject, OnInit, ViewChild} from '@angular/core';
 import Typed from 'typed.js';
 import {GeneralService} from './services/general.service';
 import {Quote} from './models/Quote';
 import {DOCUMENT} from '@angular/common';
-import {HOME, ABOUT, RESUME, TOGGLED, PORTFOLIO, SERVICES} from './utils/constants';
+import {HOME, ABOUT, RESUME, TOGGLED, PORTFOLIO, SERVICES, CONTACT} from './utils/constants';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.component';
 import {Project} from './models/Project';
 import * as AOS from 'aos';
+import {Email} from '../assets/js/smtp.js';
+// declare let Email: any;
+import {FormBuilder, Validators} from '@angular/forms';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -31,6 +35,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   @ViewChild('resume') resumeSectionRef: ElementRef;
   @ViewChild('portfolio') portfolioSectionRef: ElementRef;
   @ViewChild('services') servicesSectionRef: ElementRef;
+  @ViewChild('contact') contactSectionRef: ElementRef;
   @ViewChild('backToTop') backToTopRef: ElementRef;
 
   currentActive = 'home';
@@ -40,9 +45,21 @@ export class AppComponent implements OnInit, AfterViewInit{
   resumeOffset: number = null;
   portfolioOffset: number = null;
   servicesOffset: number = null;
+  contactOffset: number = null;
+
+  emailSuccess: string = null;
+  emailFormGroup = this.fb.group({
+      name: [null, [Validators.required, Validators.minLength(4)]],
+      email: [null, [Validators.required, Validators.email]],
+      subject: [null, [Validators.required, Validators.minLength(8)]],
+      message: [null, Validators.required]
+    }
+  );
+
 
   constructor(private generalService: GeneralService,
               private modalService: NgbModal,
+              private fb: FormBuilder,
               @Inject(DOCUMENT) private document: any) {
     this.projectForge = new Project(
       'Project Forge',
@@ -106,6 +123,7 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.resumeOffset = this.resumeSectionRef.nativeElement.offsetTop;
     this.portfolioOffset = this.portfolioSectionRef.nativeElement.offsetTop;
     this.servicesOffset = this.servicesSectionRef.nativeElement.offsetTop;
+    this.contactOffset = this.contactSectionRef.nativeElement.offsetTop;
   }
 
   toggleSideMenu(): void {
@@ -140,9 +158,11 @@ export class AppComponent implements OnInit, AfterViewInit{
     } else if (this.isWithinRange(window.pageYOffset, this.resumeOffset, this.portfolioOffset)) {
       this.currentActive = RESUME;
     } else if (this.isWithinRange(window.pageYOffset, this.portfolioOffset, this.servicesOffset)) {
-      this.currentActive = PORTFOLIO
-    } else if (window.pageYOffset >= this.servicesOffset) {
+      this.currentActive = PORTFOLIO;
+    } else if (this.isWithinRange(window.pageYOffset, this.servicesOffset, this.contactOffset)) {
       this.currentActive = SERVICES;
+    } else if (window.pageYOffset >= this.contactOffset) {
+      this.currentActive = CONTACT;
     }
 
     // Toggle back-to-top button display on scroll. On first scroll, un-hide the button already to apply animations.
@@ -183,4 +203,31 @@ export class AppComponent implements OnInit, AfterViewInit{
       modalRef.componentInstance.imageUrl = this.healthNow.imageUrl;
     }
   }
-}
+
+  validateFormControl(fcName: string): boolean {
+    return this.emailFormGroup.get(fcName).invalid && (this.emailFormGroup.get(fcName).dirty || this.emailFormGroup.get(fcName).touched);
+  }
+
+  sendEmail(): void {
+    Email.send({
+      Host: environment.host,
+      Username: environment.username,
+      Password: environment.elastic_mail_password,
+      To: environment.username,
+      From: this.emailFormGroup.get('email').value,
+      Subject: this.emailFormGroup.get('subject').value,
+      Body: `
+            <b>Name: </b>${this.emailFormGroup.get('name').value} <br/>
+            <b>Email: </b>${this.emailFormGroup.get('email').value}<br />
+            <b>Subject: </b>${this.emailFormGroup.get('subject').value}<br />
+            <b>Message:</b> <br /> ${this.emailFormGroup.get('message').value} <br><br>
+            <i>This is sent as a feedback from my portfolio page</i><br/><br/>
+            <b>~End of Message.~</b>`
+    }).then(message => {
+      this.emailSuccess = 'Your email has been sent. Thank you for your feedback!';
+      setTimeout(() => this.emailSuccess = null, 2500);
+      this.emailFormGroup.reset();
+    });
+  }
+
+  }

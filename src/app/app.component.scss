@@ -254,3 +254,17 @@
 .card-body h5 {
   color: #173b6c;
 }
+
+/* ERROR VALIDATIONS */
+.alert {
+  padding: 0.5em;
+  font-size: small;
+}
+
+.red-border {
+  border: 1px solid red;
+}
+
+.disabled {
+  background: #7cbcda !important;
+}
