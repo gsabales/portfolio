@@ -331,7 +331,7 @@
 
             <div class="row">
 
-              <div class="col-lg-5 d-flex align-items-stretch">
+              <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-in-out-up1">
                 <div class="info">
                   <div class="address">
                     <i class="icofont-google-map"></i>
@@ -356,7 +356,7 @@
                 </div>
               </div>
 
-              <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+              <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-in-out-up2">
                 <!-- Email Form -->
                 <form [formGroup]="emailFormGroup" class="php-email-form">
 
@@ -392,13 +392,14 @@
                     <label for="message">Message</label>
                     <textarea class="form-control" name="message" rows="10" id="message" formControlName="message" [ngClass]="{'red-border': validateFormControl('message')}"></textarea>
                     <div *ngIf="validateFormControl('message')" class="alert alert-danger">
-                      <div *ngIf="emailFormGroup.get('message').errors.required">Please write something for us</div>
+                      <div *ngIf="emailFormGroup.get('message').errors.required">Please write something for me</div>
                     </div>
                   </div>
 
                   <div *ngIf="!!emailSuccess" class="alert alert-success" [innerHTML]="this.emailSuccess"></div>
                   <div class="text-center">
-                    <button type="submit" [disabled]="!this.emailFormGroup.valid" [ngClass]="{'disabled':!this.emailFormGroup.valid}"
+                    <div *ngIf="isLoading"><img class="loading-spinner" src="assets/images/loading.gif"/></div>
+                    <button *ngIf="!isLoading" type="submit" [disabled]="!this.emailFormGroup.valid" [ngClass]="{'disabled':!this.emailFormGroup.valid}"
                             (click)="sendEmail()">Send Message</button></div>
 
                 </form>
@@ -407,6 +408,15 @@
           </div>
         </section>
       </main>
+      <!-- Footer -->
+      <footer class="my-footer">
+        <div class="container">
+          <div class="copyright">
+            Copyright &copy; 2021 <b>Glenn Sabales</b>
+          </div>
+          <div class="credits">All Rights Reserved</div>
+        </div>
+      </footer>
     </div>
   </div>
 </div>

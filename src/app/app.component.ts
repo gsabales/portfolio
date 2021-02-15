@@ -48,6 +48,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   contactOffset: number = null;
 
   emailSuccess: string = null;
+  isLoading = false;
   emailFormGroup = this.fb.group({
       name: [null, [Validators.required, Validators.minLength(4)]],
       email: [null, [Validators.required, Validators.email]],
@@ -55,7 +56,6 @@ export class AppComponent implements OnInit, AfterViewInit{
       message: [null, Validators.required]
     }
   );
-
 
   constructor(private generalService: GeneralService,
               private modalService: NgbModal,
@@ -209,6 +209,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   sendEmail(): void {
+    this.isLoading = true;
     Email.send({
       Host: environment.host,
       Username: environment.username,
@@ -221,12 +222,13 @@ export class AppComponent implements OnInit, AfterViewInit{
             <b>Email: </b>${this.emailFormGroup.get('email').value}<br />
             <b>Subject: </b>${this.emailFormGroup.get('subject').value}<br />
             <b>Message:</b> <br /> ${this.emailFormGroup.get('message').value} <br><br>
-            <i>This is sent as a feedback from my portfolio page</i><br/><br/>
+            <i>This is sent as a feedback from my portfolio website</i><br/><br/>
             <b>~End of Message.~</b>`
     }).then(message => {
+      this.isLoading = false;
+      this.emailFormGroup.reset();
       this.emailSuccess = 'Your email has been sent. Thank you for your feedback!';
       setTimeout(() => this.emailSuccess = null, 2500);
-      this.emailFormGroup.reset();
     });
   }
 
