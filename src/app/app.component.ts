@@ -214,7 +214,7 @@ export class AppComponent implements OnInit, AfterViewInit{
       Username: environment.username,
       Password: environment.elastic_mail_password,
       To: environment.username,
-      From: this.emailFormGroup.get('email').value,
+      From: environment.username,
       Subject: this.emailFormGroup.get('subject').value,
       Body: `
             <b>Name: </b>${this.emailFormGroup.get('name').value} <br/>
