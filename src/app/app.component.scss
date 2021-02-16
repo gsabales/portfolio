@@ -255,7 +255,7 @@
   color: #173b6c;
 }
 
-/* ERROR VALIDATIONS */
+/* EMAIL SECTION */
 .alert {
   padding: 0.5em;
   font-size: small;
@@ -267,4 +267,23 @@
 
 .disabled {
   background: #7cbcda !important;
+}
+
+.loading-spinner {
+  height: 50px;
+  width: 50px;
+}
+
+/* FOOTER SECTION */
+.my-footer {
+  position: static;
+  width: auto;
+  padding: 15px;
+  color: #f4f6fd;
+  font-size: 14px;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: #0f1034;
+  text-align: center;
 }
