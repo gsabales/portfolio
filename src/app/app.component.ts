@@ -9,7 +9,6 @@ import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.com
 import {Project} from './models/Project';
 import * as AOS from 'aos';
 import {Email} from '../assets/js/smtp.js';
-// declare let Email: any;
 import {FormBuilder, Validators} from '@angular/forms';
 import {environment} from '../environments/environment';
 
@@ -97,7 +96,7 @@ export class AppComponent implements OnInit, AfterViewInit{
 
     this.toggle = false;
     const typed = new Typed('#typed', {
-      strings: ['a Developer', 'a Learner', 'an Anime Lover'],
+      strings: ['a Developer', 'a Learner', 'a Mobile Gamer'],
       typeSpeed: 100,
       backSpeed: 50,
       backDelay: 2000,
@@ -108,10 +107,9 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   getGeneratedQuote(): void {
-    this.generalService.getRandomQuote().subscribe(quotes => {
-        const index = Math.round(Math.random() * 1643);
-        this.quote = quotes[index].text;
-        this.author = (quotes[index].author !== null) ? quotes[index].author : 'Anonymous';
+    this.generalService.getRandomQuote().subscribe(quote => {
+        this.quote = quote.quote;
+        this.author = (quote.author !== null) ? quote.author : 'Anonymous';
       }
     );
   }
@@ -210,6 +208,7 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   sendEmail(): void {
     this.isLoading = true;
+    console.log(this.emailFormGroup.getRawValue());
     Email.send({
       Host: environment.host,
       Username: environment.username,
@@ -224,7 +223,7 @@ export class AppComponent implements OnInit, AfterViewInit{
             <b>Message:</b> <br /> ${this.emailFormGroup.get('message').value} <br><br>
             <i>This is sent as a feedback from my portfolio website</i><br/><br/>
             <b>~End of Message.~</b>`
-    }).then(message => {
+    }).then(() => {
       this.isLoading = false;
       this.emailFormGroup.reset();
       this.emailSuccess = 'Your email has been sent. Thank you for your feedback!';
