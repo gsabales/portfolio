@@ -396,7 +396,7 @@
                     </div>
                   </div>
 
-                  <div *ngIf="!!emailSuccess" class="alert alert-success" [innerHTML]="this.emailSuccess"></div>
+                  <div *ngIf="!!emailStatusMessage" [ngClass]="this.emailStatus ? 'alert alert-success' : 'alert alert-danger'" [innerHTML]="this.emailStatusMessage"></div>
                   <div class="text-center">
                     <div *ngIf="isLoading"><img class="loading-spinner" src="assets/images/loading.gif"/></div>
                     <button *ngIf="!isLoading" type="submit" [disabled]="!this.emailFormGroup.valid" [ngClass]="{'disabled':!this.emailFormGroup.valid}"
