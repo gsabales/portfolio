@@ -8,9 +8,10 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.component';
 import {Project} from './models/Project';
 import * as AOS from 'aos';
-import {Email} from '../assets/js/smtp.js';
+// import {Email} from '../assets/js/smtp.js';
 import {FormBuilder, Validators} from '@angular/forms';
 import {environment} from '../environments/environment';
+import {Email} from "./models/Email";
 
 @Component({
   selector: 'app-root',
@@ -46,7 +47,8 @@ export class AppComponent implements OnInit, AfterViewInit{
   servicesOffset: number = null;
   contactOffset: number = null;
 
-  emailSuccess: string = null;
+  emailStatus: boolean;
+  emailStatusMessage: string = null;
   isLoading = false;
   emailFormGroup = this.fb.group({
       name: [null, [Validators.required, Validators.minLength(4)]],
@@ -208,27 +210,47 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   sendEmail(): void {
     this.isLoading = true;
-    console.log(this.emailFormGroup.getRawValue());
-    Email.send({
-      Host: environment.host,
-      Username: environment.username,
-      Password: environment.elastic_mail_password,
-      To: environment.username,
-      From: environment.username,
-      Subject: this.emailFormGroup.get('subject').value,
-      Body: `
-            <b>Name: </b>${this.emailFormGroup.get('name').value} <br/>
-            <b>Email: </b>${this.emailFormGroup.get('email').value}<br />
-            <b>Subject: </b>${this.emailFormGroup.get('subject').value}<br />
-            <b>Message:</b> <br /> ${this.emailFormGroup.get('message').value} <br><br>
-            <i>This is sent as a feedback from my portfolio website</i><br/><br/>
-            <b>~End of Message.~</b>`
-    }).then(() => {
-      this.isLoading = false;
-      this.emailFormGroup.reset();
-      this.emailSuccess = 'Your email has been sent. Thank you for your feedback!';
-      setTimeout(() => this.emailSuccess = null, 2500);
+    const email = new Email(
+      this.emailFormGroup.get('name').value,
+      this.emailFormGroup.get('email').value,
+      this.emailFormGroup.get('subject').value,
+      this.emailFormGroup.get('message').value,
+    );
+
+    this.generalService.sendEmail(email).subscribe({
+      next: () => this.requestCompleted(true, 'Your email has been sent. Thank you for your feedback!'),
+      error: () => this.requestCompleted(false, 'Oops! Something went wrong while sending email.')
     });
+
+    // Via SmtpJS
+    // Email.send({
+    //   Host: environment.host,
+    //   Username: environment.username,
+    //   Password: environment.elastic_mail_password,
+    //   To: environment.username,
+    //   From: environment.username,
+    //   Subject: this.emailFormGroup.get('subject').value,
+    //   Body: `
+    //         <b>Name: </b>${this.emailFormGroup.get('name').value} <br/>
+    //         <b>Email: </b>${this.emailFormGroup.get('email').value}<br />
+    //         <b>Subject: </b>${this.emailFormGroup.get('subject').value}<br />
+    //         <b>Message:</b> <br /> ${this.emailFormGroup.get('message').value} <br><br>
+    //         <i>This is sent as a feedback from my portfolio website</i><br/><br/>
+    //         <b>~End of Message.~</b>`
+    // }).then(() => {
+    //   this.isLoading = false;
+    //   this.emailFormGroup.reset();
+    //   this.emailSuccess = 'Your email has been sent. Thank you for your feedback!';
+    //   setTimeout(() => this.emailSuccess = null, 2500);
+    // });
   }
 
+  requestCompleted(status: boolean, message: string): void {
+    this.emailStatus = status;
+    this.emailStatusMessage = message;
+    this.isLoading = false;
+    this.emailFormGroup.reset();
+    setTimeout(() => this.emailStatusMessage = null, 2500);
   }
+
+}
