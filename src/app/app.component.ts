@@ -226,12 +226,12 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   sendEmail(): void {
     this.isLoading = true;
-    const email = new Email(
-      this.emailFormGroup.get('name').value,
-      this.emailFormGroup.get('email').value,
-      this.emailFormGroup.get('subject').value,
-      this.emailFormGroup.get('message').value,
-    );
+    // const email = new Email(
+    //   this.emailFormGroup.get('name').value,
+    //   this.emailFormGroup.get('email').value,
+    //   this.emailFormGroup.get('subject').value,
+    //   this.emailFormGroup.get('message').value,
+    // );
 
     // Via SmtpJS
     Email.send({
