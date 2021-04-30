@@ -17,7 +17,7 @@ export class GeneralService {
     return this.http.get<Quote>(QUOTES_API);
   }
 
-  sendEmail(email: Email): Observable<Email> {
-    return this.http.post<Email>(environment.email_url, email);
-  }
+  // sendEmail(email: Email): Observable<Email> {
+  //   return this.http.post<Email>(environment.email_url, email);
+  // }
 }
