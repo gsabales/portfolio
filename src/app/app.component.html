@@ -204,6 +204,7 @@
                     <li>Assigned to be a part of the development team for an AWS instance ticketing system for the client</li>
                     <li>Created a desk reservation system as an internal project for the company</li>
                     <li>Implemented API integration for third-party applications to access video service of KonsultaMD</li>
+                    <li>Created a custom API on top of existing BDO APIs built specifically for multiple requests</li>
                     <li>Supervised L3 support team for two projects as acting internal lead</li>
                   </ul>
                 </div>
@@ -262,6 +263,18 @@
                     <div class="card-body">
                       <h5>{{healthNow.name}}</h5>
                       <p class="card-text">{{healthNow.description}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row card-table justify-content-center">
+                <!-- BDO CMS -->
+                <div class="col-lg-4" data-aos="fade-in-left-1">
+                  <div class="card mb-4 project-card" (click)="openModal('CMS')">
+                    <img class="card-img-top" src="{{bdoCMS.imageUrl}}">
+                    <div class="card-body">
+                      <h5>{{bdoCMS.name}}</h5>
+                      <p class="card-text">{{bdoCMS.description}}</p>
                     </div>
                   </div>
                 </div>
