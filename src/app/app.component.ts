@@ -20,7 +20,6 @@ import {Email} from "./models/Email";
 })
 export class AppComponent implements OnInit, AfterViewInit{
   toggle: boolean;
-  quotes: Quote[];
   quote: string;
   author: string;
   option: string;
@@ -109,9 +108,10 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   getGeneratedQuote(): void {
-    this.generalService.getRandomQuote().subscribe(quote => {
-        this.quote = quote.quote;
-        this.author = (quote.author !== null) ? quote.author : 'Anonymous';
+    this.generalService.getRandomQuote().subscribe(quotes => {
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        this.quote = randomQuote.text;
+        this.author = !!randomQuote.author ? randomQuote.author : 'Anonymous';
       }
     );
   }

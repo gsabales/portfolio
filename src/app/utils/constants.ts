@@ -6,5 +6,5 @@ export const SERVICES = 'services';
 export const CONTACT = 'contact';
 
 export const TOGGLED = 'toggled';
-export const QUOTES_API = 'https://freequote.herokuapp.com/';
+export const QUOTES_API = 'https://type.fit/api/quotes';
 
