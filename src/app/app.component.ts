@@ -8,10 +8,9 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.component';
 import {Project} from './models/Project';
 import * as AOS from 'aos';
-// import {Email} from '../assets/js/smtp.js';
+import {Email} from '../assets/js/smtp.js';
 import {FormBuilder, Validators} from '@angular/forms';
 import {environment} from '../environments/environment';
-import {Email} from "./models/Email";
 
 @Component({
   selector: 'app-root',
@@ -26,6 +25,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   projectForge: Project;
   projectOccupy: Project;
   healthNow: Project;
+  bdoCMS: Project;
 
   @ViewChild('sideMenu') sideMenuRef: ElementRef;
   @ViewChild('home') homeSectionRef: ElementRef;
@@ -64,23 +64,30 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.projectForge = new Project(
       'Project Forge',
       'AWS Instance Ticketing System',
-      'An AWS instance ticketing system for a large telecommunications company. ' +
-      'This is my first project as a developer where I learned most the fundamentals of web development and microservices.',
+      'An AWS instance ticketing system for Globe developers. This is my first project as a developer where I learned ' +
+      'the fundamentals of web development and microservices.',
       'assets/images/forge-img.png'
       );
     this.projectOccupy = new Project(
       'Project Occupy',
       'Desk Reservation System',
-      'An internal desk reservation system project built in Angular and Springboot. This is where I practiced my front-end ' +
+      'An internal desk reservation system project built in Angular and Spring Boot. This is where I practiced my front-end ' +
       'development skills since this application is UI/UX intensive.',
       'assets/images/occupy-img.png'
     );
     this.healthNow = new Project(
-      'HealthNow + KMD Integration',
-      'KonsultaMD API integration with HealthNow',
-      'Enabled HealthNow to access the video conference services of KonsultaMD through API integration. This is where ' +
+      'KMD API Integration',
+      'KonsultaMD API integration',
+      'Integrated third-party API (HealthNow) with video conference services of KonsultaMD . This is where ' +
       'I learned API communication concepts such as OAuth2, JWT and FeignClient.',
       'assets/images/konsulta-md.png'
+    );
+    this.bdoCMS = new Project(
+      'BDO CMS',
+      'BDO Credit Management System',
+      'Custom API built for aggregated requests and communicates with BDO\'s core banking system. Since the API' +
+      ' consists of multiple requests, I have to learn and implement multithreading techniques to optimize the API response.',
+      'assets/images/bdo.png'
     );
   }
 
@@ -151,6 +158,10 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   @HostListener('window:scroll', ['$event'])
   onScroll(): void {
+
+    // For debugging purposes
+    // this.logYOffsets();
+
     if (this.isWithinRange(window.pageYOffset, this.homeOffset, this.aboutOffset)) {
       this.currentActive = HOME;
     } else if (this.isWithinRange(window.pageYOffset, this.aboutOffset, this.resumeOffset)) {
@@ -201,6 +212,11 @@ export class AppComponent implements OnInit, AfterViewInit{
       modalRef.componentInstance.description =  this.healthNow.description;
       modalRef.componentInstance.content = this.healthNow.content;
       modalRef.componentInstance.imageUrl = this.healthNow.imageUrl;
+    } else if(name === 'CMS') {
+      modalRef.componentInstance.name = this.bdoCMS.name;
+      modalRef.componentInstance.description =  this.bdoCMS.description;
+      modalRef.componentInstance.content = this.bdoCMS.content;
+      modalRef.componentInstance.imageUrl = this.bdoCMS.imageUrl;
     }
   }
 
@@ -210,47 +226,45 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   sendEmail(): void {
     this.isLoading = true;
-    const email = new Email(
-      this.emailFormGroup.get('name').value,
-      this.emailFormGroup.get('email').value,
-      this.emailFormGroup.get('subject').value,
-      this.emailFormGroup.get('message').value,
-    );
-
-    this.generalService.sendEmail(email).subscribe({
-      next: () => this.requestCompleted(true, 'Your email has been sent. Thank you for your feedback!'),
-      error: () => this.requestCompleted(false, 'Oops! Something went wrong while sending email.')
-    });
+    // const email = new Email(
+    //   this.emailFormGroup.get('name').value,
+    //   this.emailFormGroup.get('email').value,
+    //   this.emailFormGroup.get('subject').value,
+    //   this.emailFormGroup.get('message').value,
+    // );
 
     // Via SmtpJS
-    // Email.send({
-    //   Host: environment.host,
-    //   Username: environment.username,
-    //   Password: environment.elastic_mail_password,
-    //   To: environment.username,
-    //   From: environment.username,
-    //   Subject: this.emailFormGroup.get('subject').value,
-    //   Body: `
-    //         <b>Name: </b>${this.emailFormGroup.get('name').value} <br/>
-    //         <b>Email: </b>${this.emailFormGroup.get('email').value}<br />
-    //         <b>Subject: </b>${this.emailFormGroup.get('subject').value}<br />
-    //         <b>Message:</b> <br /> ${this.emailFormGroup.get('message').value} <br><br>
-    //         <i>This is sent as a feedback from my portfolio website</i><br/><br/>
-    //         <b>~End of Message.~</b>`
-    // }).then(() => {
-    //   this.isLoading = false;
-    //   this.emailFormGroup.reset();
-    //   this.emailSuccess = 'Your email has been sent. Thank you for your feedback!';
-    //   setTimeout(() => this.emailSuccess = null, 2500);
-    // });
+    Email.send({
+      Host: environment.host,
+      Username: environment.username,
+      Password: environment.elastic_mail_password,
+      To: environment.username,
+      From: environment.username,
+      Subject: this.emailFormGroup.get('subject').value,
+      Body: `
+            <b>Name: </b>${this.emailFormGroup.get('name').value} <br/>
+            <b>Email: </b>${this.emailFormGroup.get('email').value}<br />
+            <b>Subject: </b>${this.emailFormGroup.get('subject').value}<br />
+            <b>Message:</b> <br /> ${this.emailFormGroup.get('message').value} <br><br>
+            <i>This is sent as a feedback from my portfolio website</i><br/><br/>
+            <b>~End of Message.~</b>`
+    }).then(() => {
+      this.isLoading = false;
+      this.emailFormGroup.reset();
+      this.emailStatusMessage = 'Your email has been sent. Thank you for your feedback!';
+      setTimeout(() => this.emailStatusMessage = null, 2500);
+    });
   }
 
-  requestCompleted(status: boolean, message: string): void {
-    this.emailStatus = status;
-    this.emailStatusMessage = message;
-    this.isLoading = false;
-    this.emailFormGroup.reset();
-    setTimeout(() => this.emailStatusMessage = null, 2500);
+  // For debugging purposes
+  logYOffsets(): void {
+    console.log('windowOffset: ' + window.pageYOffset);
+    console.log('homeOffset: ' + this.homeOffset);
+    console.log('aboutOffset: ' + this.aboutOffset);
+    console.log('resumeOffset: ' + this.resumeOffset);
+    console.log('portfolioOffset: ' + this.portfolioOffset);
+    console.log('servicesOffset: ' + this.servicesOffset);
+    console.log('contactOffset: ' + this.contactOffset);
   }
 
 }
