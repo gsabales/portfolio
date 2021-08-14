@@ -26,6 +26,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   projectOccupy: Project;
   healthNow: Project;
   bdoCMS: Project;
+  bdoPMR: Project;
 
   @ViewChild('sideMenu') sideMenuRef: ElementRef;
   @ViewChild('home') homeSectionRef: ElementRef;
@@ -64,30 +65,43 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.projectForge = new Project(
       'Project Forge',
       'AWS Instance Ticketing System',
-      'An AWS instance ticketing system for Globe developers. This is my first project as a developer where I learned ' +
-      'the fundamentals of web development and microservices.',
+      'Forge Praxis is a web portal and AWS instance ticketing system for the client’s developers. ' +
+      'As a newbie developer, I was assigned to create the FAQ page of the web app, develop the email-sending ' +
+      'mechanism for created AWS instances, and develop the content management system of the whole web application.',
       'assets/images/forge-img.png'
       );
     this.projectOccupy = new Project(
       'Project Occupy',
       'Desk Reservation System',
-      'An internal desk reservation system project built in Angular and Spring Boot. This is where I practiced my front-end ' +
-      'development skills since this application is UI/UX intensive.',
+      'Project Occupy is a desk reservation system created for Novare as an internal project. As a developer, ' +
+      'I am responsible for creating the skeleton UI as well as the desk reservation mechanism of the system. This where ' +
+      'I honed my Angular skills since this project is UI/UX intensive.',
       'assets/images/occupy-img.png'
     );
     this.healthNow = new Project(
       'KMD API Integration',
       'KonsultaMD API integration',
-      'Integrated third-party API (HealthNow) with video conference services of KonsultaMD . This is where ' +
-      'I learned API communication concepts such as OAuth2, JWT and FeignClient.',
-      'assets/images/konsulta-md.png'
+      'In this project, we were assigned as an extension team in which our objective is to integrate HealthNow and ' +
+      'other third-party applications in the future with KonsultaMD’s video conference services. This is where I learned fundamental' +
+      ' API concepts such as OAuth2, JWT and FeignClient.',
+      'assets/images/kmd-stock-photo.png'
     );
     this.bdoCMS = new Project(
       'BDO CMS',
-      'BDO Credit Management System',
-      'Custom API built for aggregated requests and communicates with BDO\'s core banking system. Since the API' +
-      ' consists of multiple requests, I have to learn and implement multithreading techniques to optimize the API response.',
-      'assets/images/bdo.png'
+      'BDO Cash Management System',
+      'BDO Cash Management System (CMS) is a standalone API catered for corporate data of BDO Southbound APIs. This API accepts' +
+      ' aggregated requests and communicates with BDO’s core banking system. As the main developer of this API, I implemented multithreading ' +
+      'via Java’s concurrency library to optimize the API’s performance.',
+      'assets/images/cms-stock-photo.jpg'
+    );
+    this.bdoPMR = new Project(
+      'BDO PMR',
+      'BDO Prepaid Mobile Reload ',
+      'BDO Prepaid Mobile Reload (PMR) is also a standalone API which acts as an intermediary microservice between ' +
+      'BDO’s Airtime Reload (ATR) system and Paymaya API. As the main developer, my objective is to create a passthrough API ' +
+      'that facilitates the flow of reload transactions between BDO and Paymaya. This is where I extensively used Docker ' +
+      'for containerization and got familiar with deployment processes.',
+      'assets/images/pmr-stock-photo.jpg'
     );
   }
 
@@ -212,11 +226,16 @@ export class AppComponent implements OnInit, AfterViewInit{
       modalRef.componentInstance.description =  this.healthNow.description;
       modalRef.componentInstance.content = this.healthNow.content;
       modalRef.componentInstance.imageUrl = this.healthNow.imageUrl;
-    } else if(name === 'CMS') {
+    } else if (name === 'CMS') {
       modalRef.componentInstance.name = this.bdoCMS.name;
       modalRef.componentInstance.description =  this.bdoCMS.description;
       modalRef.componentInstance.content = this.bdoCMS.content;
       modalRef.componentInstance.imageUrl = this.bdoCMS.imageUrl;
+    } else if (name === 'PMR') {
+      modalRef.componentInstance.name = this.bdoPMR.name;
+      modalRef.componentInstance.description =  this.bdoPMR.description;
+      modalRef.componentInstance.content = this.bdoPMR.content;
+      modalRef.componentInstance.imageUrl = this.bdoPMR.imageUrl;
     }
   }
 
