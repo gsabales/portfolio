@@ -46,48 +46,8 @@
 
       <main id="main">
         <!-- About Section -->
-        <section #about id="about" class="about">
-          <div class="container">
-            <div class="section-title">
-              <h2>About</h2>
-              <p>Hi there! I created this online portfolio to practice client-side programming and to showcase technical skills
-                that I have obtained so far. Aside from coding, I also enjoy playing mobile games and watching anime.
-              </p>
-            </div>
-
-            <div class="row">
-              <div class="col-lg-4" data-aos="fade-in-out-left">
-                <img src="assets/images/profile-pic.jpg" class="about-img" alt=""/>
-              </div>
-              <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-in-out-right">
-                <h3>My Profile</h3>
-                <p class="font-italic" data-aos="fade-in-left-slow">"{{quote}}" - {{author}}</p>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <ul>
-                      <li><i class="icofont-rounded-right"></i> <strong>Birthday:</strong> 28 November 1993</li>
-                      <li><i class="icofont-rounded-right"></i> <strong>Profession:</strong> Web Developer</li>
-                      <li><i class="icofont-rounded-right"></i> <strong>Mobile No.:</strong> 0926-649-5270</li>
-                      <li><i class="icofont-rounded-right"></i> <strong>Municipality:</strong> Binangonan, Rizal</li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-6">
-                    <ul>
-                      <li><i class="icofont-rounded-right"></i> <strong>Age:</strong> 28</li>
-                      <li><i class="icofont-rounded-right"></i> <strong>Degree:</strong> B.S. Computer Science</li>
-                      <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> glenn.sabales@gmail.com</li>
-                      <li><i class="icofont-rounded-right"></i> <strong>Open to Work:</strong> Soon</li>
-                    </ul>
-                  </div>
-                </div>
-                <p>Competent and detail-driven web developer with {{workYears}} years of experience in developing web applications
-                  using Spring Boot + Angular tech stack. Has obtained sufficient knowledge in several web development
-                  frameworks and concepts in a short amount of time, such as Spring Boot, Angular, Bootstrap,
-                  Java and Microservices. Eager to learn new technical knowledge and concepts
-                  for the benefit of my career and the organization as well. </p>
-              </div>
-            </div>
-          </div>
+        <section id="about" class="about" #about>
+          <app-about [workYears]="workYears"></app-about>
         </section>
 
         <!-- Skills Section -->

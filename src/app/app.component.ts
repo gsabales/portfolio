@@ -1,9 +1,8 @@
-import {AfterViewInit, Component, ElementRef, Host, HostListener, Inject, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, Inject, OnInit, ViewChild} from '@angular/core';
 import Typed from 'typed.js';
 import {GeneralService} from './services/general.service';
-import {Quote} from './models/Quote';
 import {DOCUMENT} from '@angular/common';
-import {HOME, ABOUT, RESUME, TOGGLED, PORTFOLIO, SERVICES, CONTACT} from './utils/constants';
+import {ABOUT, CONTACT, HOME, PORTFOLIO, RESUME, SERVICES, TOGGLED} from './utils/constants';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.component';
 import {Project} from './models/Project';
@@ -19,8 +18,6 @@ import {environment} from '../environments/environment';
 })
 export class AppComponent implements OnInit, AfterViewInit{
   toggle: boolean;
-  quote: string;
-  author: string;
   option: string;
   projectForge: Project;
   projectOccupy: Project;
@@ -128,16 +125,6 @@ export class AppComponent implements OnInit, AfterViewInit{
     });
 
     this.getWorkExpYears();
-    this.getGeneratedQuote();
-  }
-
-  getGeneratedQuote(): void {
-    this.generalService.getRandomQuote().subscribe(quotes => {
-        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        this.quote = randomQuote.text;
-        this.author = !!randomQuote.author ? randomQuote.author : 'Anonymous';
-      }
-    );
   }
 
   getWorkExpYears(): void {
