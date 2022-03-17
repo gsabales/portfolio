@@ -39,6 +39,8 @@ export class AppComponent implements OnInit, AfterViewInit{
   @ViewChild('backToTop') backToTopRef: ElementRef;
 
   currentActive = 'home';
+  currentYear: Date;
+  workYears: number = null;
   homeOffset: number = null;
   aboutOffset: number = null;
   skillsOffset: number = null;
@@ -108,7 +110,6 @@ export class AppComponent implements OnInit, AfterViewInit{
   ngAfterViewInit(): void {
     // Hide back-to-top button on page load
     this.backToTopRef.nativeElement.hidden = true;
-
     this.getOffsetTop();
   }
 
@@ -117,6 +118,7 @@ export class AppComponent implements OnInit, AfterViewInit{
     AOS.init();
 
     this.toggle = false;
+    this.currentYear = new Date();
     const typed = new Typed('#typed', {
       strings: ['a Developer', 'a Learner', 'a Mobile Gamer'],
       typeSpeed: 100,
@@ -125,6 +127,7 @@ export class AppComponent implements OnInit, AfterViewInit{
       loop: true
     });
 
+    this.getWorkExpYears();
     this.getGeneratedQuote();
   }
 
@@ -135,6 +138,13 @@ export class AppComponent implements OnInit, AfterViewInit{
         this.author = !!randomQuote.author ? randomQuote.author : 'Anonymous';
       }
     );
+  }
+
+  getWorkExpYears(): void {
+    const hiringDate = new Date('07/30/2019');
+    const timeDiff = Math.abs(this.currentYear.getTime() - hiringDate.getTime());
+    const yearDiff = (timeDiff / (1000 * 3600 * 24)) / 365;
+    this.workYears = Math.round(yearDiff * 100) / 100;
   }
 
   getOffsetTop(): void {
