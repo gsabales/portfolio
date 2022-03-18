@@ -52,134 +52,75 @@
 
         <!-- Skills Section -->
         <section #skills id="skills" class="skills section-bg">
-          <div class="container">
-            <section class="section-title pt-0">
-              <h2>Skills</h2>
-              <p>
-                Before shifting careers, I thought that learning Java is enough to be a successful developer, and boy
-                was I wrong! Now, within {{workYears}} years as a web developer, I obtained a lot of technical skills necessary
-                for creating real-world applications. Here is my assessment of those skills so far.
-              </p>
-            </section>
-
-            <div class="row skills-content">
-
-              <div class="col-lg-6" data-aos="fade-in-out-up1">
-                <div class="progress">
-                  <span class="skill">Spring Boot<i class="val">80%</i></span>
-                  <div class="progress-bar-wrap">
-                    <div class="progress-bar" data-aos="progress-bar-1" role="progressbar"
-                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
-                  </div>
-                </div>
-                <div class="progress">
-                  <span class="skill">Angular 9<i class="val">75%</i></span>
-                  <div class="progress-bar-wrap">
-                    <div class="progress-bar" data-aos="progress-bar-2" role="progressbar"
-                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-                  </div>
-                </div>
-                <div class="progress">
-                  <span class="skill">Bootstrap 4<i class="val">80%</i></span>
-                  <div class="progress-bar-wrap">
-                    <div class="progress-bar" data-aos="progress-bar-3" role="progressbar"
-                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-6" data-aos="fade-in-out-up2">
-                <div class="progress">
-                  <span class="skill">Java 11<i class="val">75%</i></span>
-                  <div class="progress-bar-wrap">
-                    <div class="progress-bar" data-aos="progress-bar-4" role="progressbar"
-                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-                  </div>
-                </div>
-                <div class="progress">
-                  <span class="skill">MySQL Workbench<i class="val">65%</i></span>
-                  <div class="progress-bar-wrap">
-                    <div class="progress-bar" data-aos="progress-bar-5" role="progressbar"
-                         aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%"></div>
-                  </div>
-                </div>
-                <div class="progress">
-                  <span class="skill">Typescript<i class="val">70%</i></span>
-                  <div class="progress-bar-wrap">
-                    <div class="progress-bar" data-aos="progress-bar-6" role="progressbar"
-                         aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <app-skills [workYears]="workYears"></app-skills>
         </section>
 
         <!-- Resume Section -->
         <section #resume id="resume" class="resume pb-4">
-          <div class="container">
-            <section class="section-title pt-0">
-              <h2>Resume</h2>
-              <p>I've been working in the IT industry for more than 6 years now. For the first 5 years, I was an embedded system unit tester but
-                 ever since I graduated from college, I really wanted to pursue a career in software development. I took the opportunity to shift
-                 careers in 2019 and from that point, I continue to pursue my goal to become a skilled developer.
-              </p>
-            </section>
+          <app-resume [workYears]="workYears"></app-resume>
+<!--          <div class="container">-->
+<!--            <section class="section-title pt-0">-->
+<!--              <h2>Resume</h2>-->
+<!--              <p>I've been working in the IT industry for more than 6 years now. For the first 5 years, I was an embedded system unit tester but-->
+<!--                 ever since I graduated from college, I really wanted to pursue a career in software development. I took the opportunity to shift-->
+<!--                 careers in 2019 and from that point, I continue to pursue my goal to become a skilled developer.-->
+<!--              </p>-->
+<!--            </section>-->
 
-            <div class="row">
+<!--            <div class="row">-->
 
-              <div class="col-lg-6" data-aos="fade-in-out-up1">
-                <h3 class="resume-title">Summary</h3>
-                <div class="resume-item pb-0">
-                  <h4>Glenn Sabales</h4>
-                  <p><em>
-                    Competent and detail-driven web developer with {{workYears}} years of experience in developing web applications using Springboot + Angular
-                    tech stack.
-                  </em></p>
-                  <ul>
-                    <li>Binangonan, Rizal</li>
-                    <li>0926-649-5270</li>
-                    <li>glenn.sabales@gmail.com</li>
-                  </ul>
-                </div>
-                <h3 class="resume-title">Education</h3>
-                <div class="resume-item">
-                  <h4>Bachelor of Science in Computer Science</h4>
-                  <h5>2010 - 2014</h5>
-                  <p><em>Polytechnic University of the Philippines</em></p>
-                  <p style="font-size: 0.9em">
-                    Our thesis entitled Asynchronous Online Security System using Occupancy Detection was chosen to be published and presented in a
-                    research conference in Hanoi, Vietnam. I was assigned as the QA and technical writer of the team.
-                  </p>
-                </div>
-              </div>
+<!--              <div class="col-lg-6" data-aos="fade-in-out-up1">-->
+<!--                <h3 class="resume-title">Summary</h3>-->
+<!--                <div class="resume-item pb-0">-->
+<!--                  <h4>Glenn Sabales</h4>-->
+<!--                  <p><em>-->
+<!--                    Competent and detail-driven web developer with {{workYears}} years of experience in developing web applications using Springboot + Angular-->
+<!--                    tech stack.-->
+<!--                  </em></p>-->
+<!--                  <ul>-->
+<!--                    <li>Binangonan, Rizal</li>-->
+<!--                    <li>0926-649-5270</li>-->
+<!--                    <li>glenn.sabales@gmail.com</li>-->
+<!--                  </ul>-->
+<!--                </div>-->
+<!--                <h3 class="resume-title">Education</h3>-->
+<!--                <div class="resume-item">-->
+<!--                  <h4>Bachelor of Science in Computer Science</h4>-->
+<!--                  <h5>2010 - 2014</h5>-->
+<!--                  <p><em>Polytechnic University of the Philippines</em></p>-->
+<!--                  <p style="font-size: 0.9em">-->
+<!--                    Our thesis entitled Asynchronous Online Security System using Occupancy Detection was chosen to be published and presented in a-->
+<!--                    research conference in Hanoi, Vietnam. I was assigned as the QA and technical writer of the team.-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--              </div>-->
 
-              <div class="col-lg-6" data-aos="fade-in-out-up2">
-                <h3 class="resume-title">Professional Experience</h3>
-                <div class="resume-item">
-                  <h4>Web Developer</h4>
-                  <h5>2019 - Present</h5>
-                  <p><em>Novare Technologies, Inc.</em></p>
-                  <ul>
-                    <li>Assigned to be a part of the development team for an AWS instance ticketing system for the client</li>
-                    <li>Created a desk reservation system as an internal project for the company</li>
-                    <li>Implemented API integration for third-party applications to access video service of KonsultaMD</li>
-                    <li>Created APIs as interface between multiple web services utilized in banking industry</li>
-                    <li>Supervised L3 support team for two projects as acting internal lead</li>
-                  </ul>
-                </div>
-                <div class="resume-item">
-                  <h4>Embedded System Unit Tester</h4>
-                  <h5>2014 - 2019</h5>
-                  <p><em>Tsukiden Global Solutions, Inc.</em></p>
-                  <ul>
-                    <li>Ensure that the unit/function works properly based on the given specifications and source code</li>
-                    <li>Submit the performed unit testing to cross-checker for validation</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+<!--              <div class="col-lg-6" data-aos="fade-in-out-up2">-->
+<!--                <h3 class="resume-title">Professional Experience</h3>-->
+<!--                <div class="resume-item">-->
+<!--                  <h4>Web Developer</h4>-->
+<!--                  <h5>2019 - Present</h5>-->
+<!--                  <p><em>Novare Technologies, Inc.</em></p>-->
+<!--                  <ul>-->
+<!--                    <li>Assigned to be a part of the development team for an AWS instance ticketing system for the client</li>-->
+<!--                    <li>Created a desk reservation system as an internal project for the company</li>-->
+<!--                    <li>Implemented API integration for third-party applications to access video service of KonsultaMD</li>-->
+<!--                    <li>Created APIs as interface between multiple web services utilized in banking industry</li>-->
+<!--                    <li>Supervised L3 support team for two projects as acting internal lead</li>-->
+<!--                  </ul>-->
+<!--                </div>-->
+<!--                <div class="resume-item">-->
+<!--                  <h4>Embedded System Unit Tester</h4>-->
+<!--                  <h5>2014 - 2019</h5>-->
+<!--                  <p><em>Tsukiden Global Solutions, Inc.</em></p>-->
+<!--                  <ul>-->
+<!--                    <li>Ensure that the unit/function works properly based on the given specifications and source code</li>-->
+<!--                    <li>Submit the performed unit testing to cross-checker for validation</li>-->
+<!--                  </ul>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
         </section>
 
         <!-- Portfolio Section-->
