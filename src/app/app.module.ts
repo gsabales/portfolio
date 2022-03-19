@@ -9,6 +9,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ResumeComponent } from './components/resume/resume.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { ServicesComponent } from './components/services/services.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { ResumeComponent } from './components/resume/resume.component';
     ProjectsModalComponent,
     AboutComponent,
     SkillsComponent,
-    ResumeComponent
+    ResumeComponent,
+    PortfolioComponent,
+    ServicesComponent,
+    ContactComponent
   ],
   imports: [
       BrowserModule,

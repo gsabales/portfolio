@@ -1,0 +1,84 @@
+<div class="container">
+  <section class="section-title pt-0">
+    <h2>Contact</h2>
+    <p>Do you have any thoughts on my portfolio website? Want to talk about a job opening?
+      Feel free to contact me, preferably via email.</p>
+  </section>
+
+  <div class="row">
+
+    <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-in-out-up1">
+      <div class="info">
+        <div class="address">
+          <i class="icofont-google-map"></i>
+          <h4>Location</h4>
+          <p>0153 Cableway, Macamot, Binangonan, Rizal 1940</p>
+        </div>
+
+        <div class="email">
+          <i class="icofont-envelope"></i>
+          <h4>Email</h4>
+          <p>glenn.sabales@gmail.com</p>
+        </div>
+
+        <div class="phone">
+          <i class="icofont-phone"></i>
+          <h4>Call:</h4>
+          <p>0926-649-5270</p>
+        </div>
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1931.5436603398023!2d121.18969565799466!3d14.479675097469906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c32baa48b735%3A0xe887f6219330fe2a!2sIsland%20Gas%20Binangonan%20Rizal!5e0!3m2!1sen!2sph!4v1613292759515!5m2!1sen!2sph"
+                frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-in-out-up2">
+      <!-- Email Form -->
+      <form [formGroup]="emailFormGroup" class="php-email-form">
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="name">Your Name</label>
+            <input type="text" name="name" class="form-control" id="name" formControlName="name" [ngClass]="{'red-border': validateFormControl('name')}">
+            <div *ngIf="validateFormControl('name')" class="alert alert-danger">
+              <div *ngIf="emailFormGroup.get('name').errors.required">Name is required</div>
+              <div *ngIf="emailFormGroup.get('name').errors.minlength">Please enter at least 4 characters</div>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="email">Your Email</label>
+            <input type="text" name="email" class="form-control" id="email" formControlName="email" [ngClass]="{'red-border': validateFormControl('email')}">
+            <div *ngIf="validateFormControl('email')" class="alert alert-danger">
+              <div *ngIf="emailFormGroup.get('email').errors.required">Email is required</div>
+              <div *ngIf="emailFormGroup.get('email').errors.email">Please enter a valid email</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" name="subject" class="form-control" id="subject" formControlName="subject" [ngClass]="{'red-border': validateFormControl('subject')}">
+          <div *ngIf="validateFormControl('subject')" class="alert alert-danger">
+            <div *ngIf="emailFormGroup.get('subject').errors.required">Subject is required</div>
+            <div *ngIf="emailFormGroup.get('subject').errors.minlength">Please enter a least 8 characters</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea class="form-control" name="message" rows="10" id="message" formControlName="message" [ngClass]="{'red-border': validateFormControl('message')}"></textarea>
+          <div *ngIf="validateFormControl('message')" class="alert alert-danger">
+            <div *ngIf="emailFormGroup.get('message').errors.required">Please write something for me</div>
+          </div>
+        </div>
+
+        <div *ngIf="!!emailStatusMessage" [ngClass]="!!this.emailStatusMessage ? 'alert alert-success' : 'alert alert-danger'" [innerHTML]="this.emailStatusMessage"></div>
+        <div class="text-center">
+          <div *ngIf="isLoading"><img class="loading-spinner" src="assets/images/loading.gif"/></div>
+          <button *ngIf="!isLoading" type="submit" [disabled]="!this.emailFormGroup.valid" [ngClass]="{'disabled':!this.emailFormGroup.valid}"
+                  (click)="sendEmail()">Send Message</button></div>
+
+      </form>
+    </div>
+  </div>
+</div>
