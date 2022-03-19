@@ -46,396 +46,40 @@
 
       <main id="main">
         <!-- About Section -->
-        <section #about id="about" class="about">
-          <div class="container">
-            <div class="section-title">
-              <h2>About</h2>
-              <p>Hi there! I created this online portfolio to practice client-side programming and to showcase technical skills
-                that I have obtained so far. Aside from coding, I also enjoy playing mobile games and watching anime.
-              </p>
-            </div>
-
-            <div class="row">
-              <div class="col-lg-4" data-aos="fade-in-out-left">
-                <img src="assets/images/profile-pic.jpg" class="about-img" alt=""/>
-              </div>
-              <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-in-out-right">
-                <h3>My Profile</h3>
-                <p class="font-italic" data-aos="fade-in-left-slow">"{{quote}}" - {{author}}</p>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <ul>
-                      <li><i class="icofont-rounded-right"></i> <strong>Birthday:</strong> 28 November 1993</li>
-                      <li><i class="icofont-rounded-right"></i> <strong>Profession:</strong> Web Developer</li>
-                      <li><i class="icofont-rounded-right"></i> <strong>Mobile No.:</strong> 0926-649-5270</li>
-                      <li><i class="icofont-rounded-right"></i> <strong>Municipality:</strong> Binangonan, Rizal</li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-6">
-                    <ul>
-                      <li><i class="icofont-rounded-right"></i> <strong>Age:</strong> 28</li>
-                      <li><i class="icofont-rounded-right"></i> <strong>Degree:</strong> B.S. Computer Science</li>
-                      <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> glenn.sabales@gmail.com</li>
-                      <li><i class="icofont-rounded-right"></i> <strong>Open to Work:</strong> Soon</li>
-                    </ul>
-                  </div>
-                </div>
-                <p>Competent and detail-driven web developer with 2 years of experience in developing web applications
-                  using Spring Boot + Angular tech stack. Has obtained sufficient knowledge in several web development
-                  frameworks and concepts in a short amount of time, such as Spring Boot, Angular, Bootstrap,
-                  Java and Microservices. Eager to learn new technical knowledge and concepts
-                  for the benefit of my career and the organization as well. </p>
-              </div>
-            </div>
-          </div>
+        <section id="about" class="about" #about>
+          <app-about [workYears]="workYears"></app-about>
         </section>
 
         <!-- Skills Section -->
         <section #skills id="skills" class="skills section-bg">
-          <div class="container">
-            <section class="section-title pt-0">
-              <h2>Skills</h2>
-              <p>
-                Before shifting careers, I thought that learning Java is enough to be a successful developer, and boy
-                was I wrong! Now, within 2 years as a web developer, I obtained a lot of technical skills necessary
-                for creating real-world applications. Here is my assessment of those skills so far.
-              </p>
-            </section>
-
-            <div class="row skills-content">
-
-              <div class="col-lg-6" data-aos="fade-in-out-up1">
-                <div class="progress">
-                  <span class="skill">Spring Boot<i class="val">80%</i></span>
-                  <div class="progress-bar-wrap">
-                    <div class="progress-bar" data-aos="progress-bar-1" role="progressbar"
-                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
-                  </div>
-                </div>
-                <div class="progress">
-                  <span class="skill">Angular 9<i class="val">75%</i></span>
-                  <div class="progress-bar-wrap">
-                    <div class="progress-bar" data-aos="progress-bar-2" role="progressbar"
-                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-                  </div>
-                </div>
-                <div class="progress">
-                  <span class="skill">Bootstrap 4<i class="val">80%</i></span>
-                  <div class="progress-bar-wrap">
-                    <div class="progress-bar" data-aos="progress-bar-3" role="progressbar"
-                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-6" data-aos="fade-in-out-up2">
-                <div class="progress">
-                  <span class="skill">Java 11<i class="val">75%</i></span>
-                  <div class="progress-bar-wrap">
-                    <div class="progress-bar" data-aos="progress-bar-4" role="progressbar"
-                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-                  </div>
-                </div>
-                <div class="progress">
-                  <span class="skill">MySQL Workbench<i class="val">65%</i></span>
-                  <div class="progress-bar-wrap">
-                    <div class="progress-bar" data-aos="progress-bar-5" role="progressbar"
-                         aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%"></div>
-                  </div>
-                </div>
-                <div class="progress">
-                  <span class="skill">Typescript<i class="val">70%</i></span>
-                  <div class="progress-bar-wrap">
-                    <div class="progress-bar" data-aos="progress-bar-6" role="progressbar"
-                         aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <app-skills [workYears]="workYears"></app-skills>
         </section>
 
         <!-- Resume Section -->
         <section #resume id="resume" class="resume pb-4">
-          <div class="container">
-            <section class="section-title pt-0">
-              <h2>Resume</h2>
-              <p>I've been working in the IT industry for more than 6 years now. For the first 5 years, I was an embedded system unit tester but
-                 ever since I graduated from college, I really wanted to pursue a career in software development. I took the opportunity to shift
-                 careers in 2019 and from that point, I continue to pursue my goal to become a skilled developer.
-              </p>
-            </section>
-
-            <div class="row">
-
-              <div class="col-lg-6" data-aos="fade-in-out-up1">
-                <h3 class="resume-title">Summary</h3>
-                <div class="resume-item pb-0">
-                  <h4>Glenn Sabales</h4>
-                  <p><em>
-                    Competent and detail-driven web developer with 2 years of experience in developing web applications using Springboot + Angular
-                    tech stack.
-                  </em></p>
-                  <ul>
-                    <li>Binangonan, Rizal</li>
-                    <li>0926-649-5270</li>
-                    <li>glenn.sabales@gmail.com</li>
-                  </ul>
-                </div>
-                <h3 class="resume-title">Education</h3>
-                <div class="resume-item">
-                  <h4>Bachelor of Science in Computer Science</h4>
-                  <h5>2010 - 2014</h5>
-                  <p><em>Polytechnic University of the Philippines</em></p>
-                  <p style="font-size: 0.9em">
-                    Our thesis entitled Asynchronous Online Security System using Occupancy Detection was chosen to be published and presented in a
-                    research conference in Hanoi, Vietnam. I was assigned as the QA and technical writer of the team.
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-lg-6" data-aos="fade-in-out-up2">
-                <h3 class="resume-title">Professional Experience</h3>
-                <div class="resume-item">
-                  <h4>Web Developer</h4>
-                  <h5>2019 - Present</h5>
-                  <p><em>Novare Technologies, Inc.</em></p>
-                  <ul>
-                    <li>Assigned to be a part of the development team for an AWS instance ticketing system for the client</li>
-                    <li>Created a desk reservation system as an internal project for the company</li>
-                    <li>Implemented API integration for third-party applications to access video service of KonsultaMD</li>
-                    <li>Created APIs as interface between multiple web services utilized in banking industry</li>
-                    <li>Supervised L3 support team for two projects as acting internal lead</li>
-                  </ul>
-                </div>
-                <div class="resume-item">
-                  <h4>Embedded System Unit Tester</h4>
-                  <h5>2014 - 2019</h5>
-                  <p><em>Tsukiden Global Solutions, Inc.</em></p>
-                  <ul>
-                    <li>Ensure that the unit/function works properly based on the given specifications and source code</li>
-                    <li>Submit the performed unit testing to cross-checker for validation</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          <app-resume [workYears]="workYears"></app-resume>
         </section>
 
         <!-- Portfolio Section-->
         <section #portfolio id="portfolio" class="portfolio-bg pb-0">
-          <div class="container portfolio-section">
-            <section class="section-title pt-0">
-              <h2>Projects</h2>
-              <p>
-                Web development is one of those professions where you'll gain a lot more knowledge through actual experience
-                rather than college lectures. As such, these are the projects where I participated in actual development and
-                obtained fundamental skills in return.
-              </p>
-            </section>
-
-            <div class="container">
-              <div class="row card-table">
-                <!-- Project Forge -->
-                <div class="col-lg-4" data-aos="fade-in-left-1">
-                  <div class="card mb-4 project-card" (click)="openModal('Forge')">
-                    <img class="card-img-top" src="{{projectForge.imageUrl}}">
-                    <div class="card-body">
-                      <h5>{{projectForge.name}}</h5>
-                      <p class="card-text">{{projectForge.description}}</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- Project Occupy -->
-                <div class="col-lg-4" data-aos="fade-in-left-2">
-                  <div class="card mb-4 project-card" (click)="openModal('Occupy')">
-                    <img class="card-img-top" src="{{projectOccupy.imageUrl}}">
-                    <div class="card-body">
-                      <h5>{{projectOccupy.name}}</h5>
-                      <p class="card-text">{{projectOccupy.description}}</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- HealthNow -->
-                <div class="col-lg-4" data-aos="fade-in-left-3">
-                  <div class="card mb-4 project-card" (click)="openModal('HealthNow')">
-                    <img class="card-img-top" src="{{healthNow.imageUrl}}">
-                    <div class="card-body">
-                      <h5>{{healthNow.name}}</h5>
-                      <p class="card-text">{{healthNow.description}}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row card-table justify-content-center">
-                <!-- BDO CMS -->
-                <div class="col-lg-4" data-aos="fade-in-left-1">
-                  <div class="card mb-4 project-card" (click)="openModal('CMS')">
-                    <img class="card-img-top" src="{{bdoCMS.imageUrl}}">
-                    <div class="card-body">
-                      <h5>{{bdoCMS.name}}</h5>
-                      <p class="card-text">{{bdoCMS.description}}</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- BDO PMR -->
-                <div class="col-lg-4" data-aos="fade-in-left-2">
-                  <div class="card mb-4 project-card" (click)="openModal('PMR')">
-                    <img class="card-img-top" src="{{bdoPMR.imageUrl}}">
-                    <div class="card-body">
-                      <h5>{{bdoPMR.name}}</h5>
-                      <p class="card-text">{{bdoPMR.description}}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <app-portfolio></app-portfolio>
         </section>
 
         <!-- Services Section-->
         <section #services id="services" class="services section-bg ">
-          <div class="container services-section">
-            <section class="section-title pt-0">
-              <h2>Tech Stack</h2>
-              <p>Need someone in your organization who's proficient with these tools and skills? I might help you implement
-              your design through this tech stack.</p>
-            </section>
-
-            <div class="row">
-              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-in-left-1">
-                <div class="icon"><i class="icofont-leaf"></i></div>
-                <h4 class="title">Spring Boot</h4>
-                <p class="description">I prefer to code using Spring Boot since most of the backend portion of
-                web applications I have worked on were built using this Java framework</p>
-              </div>
-              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-in-left-2">
-                <div class="icon"><i class="icofont-shield"></i></div>
-                <h4 class="title">Angular</h4>
-                <p class="description">For frontend development, I prefer to use Angular framework
-                  since I like how Typescript enforces strongly-typed data values</p>
-              </div>
-              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-in-left-3">
-                <div class="icon"><i class="icofont-database"></i></div>
-                <h4 class="title">MySQL/PostgreSQL</h4>
-                <p class="description">I have used relational databases such as MySQL and PostgreSQL, but I'm more inclined to use
-                MySQL and its UI tool MySQL Workbench</p>
-              </div>
-              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-in-right-1">
-                <div class="icon"><i class="icofont-github"></i></div>
-                <h4 class="title">Github/Gitlab/Bitbucket</h4>
-                <p class="description">I think Git is such a staple in web development nowadays especially if you work as a team.
-                  For code repositories, I use Github for my side projects and Gitlab/Bitbucket for company projects</p>
-              </div>
-              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-in-right-2">
-                <div class="icon"><i class="icofont-bootstrap"></i></div>
-                <h4 class="title">Bootstrap</h4>
-                <p class="description">Bootstrap's grid layout and flex properties helped me a lot in web designing. Until now,
-                I consider this UI/UX library a life-saver</p>
-              </div>
-              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-in-right-3">
-                <div class="icon"><i class="icofont-code"></i></div>
-                <h4 class="title">IntelliJ/Postman</h4>
-                <p class="description">IntelliJ IDEA is my preferred IDE for coding due to its nice features. As for API development,
-                  Postman is a must-have for API creation and testing</p>
-              </div>
-            </div>
-          </div>
+          <app-services></app-services>
         </section>
 
         <!-- Contact Section -->
         <section #contact id="contact" class="contact">
-          <div class="container">
-            <section class="section-title pt-0">
-              <h2>Contact</h2>
-              <p>Do you have any thoughts on my portfolio website? Want to talk about a job opening?
-              Feel free to contact me, preferably via email.</p>
-            </section>
-
-            <div class="row">
-
-              <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-in-out-up1">
-                <div class="info">
-                  <div class="address">
-                    <i class="icofont-google-map"></i>
-                    <h4>Location</h4>
-                    <p>0153 Cableway, Macamot, Binangonan, Rizal 1940</p>
-                  </div>
-
-                  <div class="email">
-                    <i class="icofont-envelope"></i>
-                    <h4>Email</h4>
-                    <p>glenn.sabales@gmail.com</p>
-                  </div>
-
-                  <div class="phone">
-                    <i class="icofont-phone"></i>
-                    <h4>Call:</h4>
-                    <p>0926-649-5270</p>
-                  </div>
-
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1931.5436603398023!2d121.18969565799466!3d14.479675097469906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c32baa48b735%3A0xe887f6219330fe2a!2sIsland%20Gas%20Binangonan%20Rizal!5e0!3m2!1sen!2sph!4v1613292759515!5m2!1sen!2sph"
-                          frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
-                </div>
-              </div>
-
-              <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-in-out-up2">
-                <!-- Email Form -->
-                <form [formGroup]="emailFormGroup" class="php-email-form">
-
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="name">Your Name</label>
-                      <input type="text" name="name" class="form-control" id="name" formControlName="name" [ngClass]="{'red-border': validateFormControl('name')}">
-                      <div *ngIf="validateFormControl('name')" class="alert alert-danger">
-                        <div *ngIf="emailFormGroup.get('name').errors.required">Name is required</div>
-                        <div *ngIf="emailFormGroup.get('name').errors.minlength">Please enter at least 4 characters</div>
-                      </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="email">Your Email</label>
-                      <input type="text" name="email" class="form-control" id="email" formControlName="email" [ngClass]="{'red-border': validateFormControl('email')}">
-                      <div *ngIf="validateFormControl('email')" class="alert alert-danger">
-                        <div *ngIf="emailFormGroup.get('email').errors.required">Email is required</div>
-                        <div *ngIf="emailFormGroup.get('email').errors.email">Please enter a valid email</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" name="subject" class="form-control" id="subject" formControlName="subject" [ngClass]="{'red-border': validateFormControl('subject')}">
-                    <div *ngIf="validateFormControl('subject')" class="alert alert-danger">
-                      <div *ngIf="emailFormGroup.get('subject').errors.required">Subject is required</div>
-                      <div *ngIf="emailFormGroup.get('subject').errors.minlength">Please enter a least 8 characters</div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea class="form-control" name="message" rows="10" id="message" formControlName="message" [ngClass]="{'red-border': validateFormControl('message')}"></textarea>
-                    <div *ngIf="validateFormControl('message')" class="alert alert-danger">
-                      <div *ngIf="emailFormGroup.get('message').errors.required">Please write something for me</div>
-                    </div>
-                  </div>
-
-                  <div *ngIf="!!emailStatusMessage" [ngClass]="!!this.emailStatusMessage ? 'alert alert-success' : 'alert alert-danger'" [innerHTML]="this.emailStatusMessage"></div>
-                  <div class="text-center">
-                    <div *ngIf="isLoading"><img class="loading-spinner" src="assets/images/loading.gif"/></div>
-                    <button *ngIf="!isLoading" type="submit" [disabled]="!this.emailFormGroup.valid" [ngClass]="{'disabled':!this.emailFormGroup.valid}"
-                            (click)="sendEmail()">Send Message</button></div>
-
-                </form>
-              </div>
-            </div>
-          </div>
+          <app-contact></app-contact>
         </section>
       </main>
       <!-- Footer -->
       <footer class="my-footer">
         <div class="container">
           <div class="copyright">
-            Copyright &copy; 2021 <b>Glenn Sabales</b>
+            Copyright &copy; {{currentYear.getFullYear()}} <b>Glenn Sabales</b>
           </div>
           <div class="credits">All Rights Reserved</div>
         </div>

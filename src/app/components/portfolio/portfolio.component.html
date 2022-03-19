@@ -1,0 +1,67 @@
+<div class="container portfolio-section">
+  <section class="section-title pt-0">
+    <h2>Projects</h2>
+    <p>
+      Web development is one of those professions where you'll gain a lot more knowledge through actual experience
+      rather than college lectures. As such, these are the projects where I participated in actual development and
+      obtained fundamental skills in return.
+    </p>
+  </section>
+
+  <div class="container">
+    <div class="row card-table">
+      <!-- Project Forge -->
+      <div class="col-lg-4" data-aos="fade-in-left-1">
+        <div class="card mb-4 project-card" (click)="openModal('Forge')">
+          <img class="card-img-top" src="{{projectForge.imageUrl}}">
+          <div class="card-body">
+            <h5>{{projectForge.name}}</h5>
+            <p class="card-text">{{projectForge.description}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- Project Occupy -->
+      <div class="col-lg-4" data-aos="fade-in-left-2">
+        <div class="card mb-4 project-card" (click)="openModal('Occupy')">
+          <img class="card-img-top" src="{{projectOccupy.imageUrl}}">
+          <div class="card-body">
+            <h5>{{projectOccupy.name}}</h5>
+            <p class="card-text">{{projectOccupy.description}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- HealthNow -->
+      <div class="col-lg-4" data-aos="fade-in-left-3">
+        <div class="card mb-4 project-card" (click)="openModal('HealthNow')">
+          <img class="card-img-top" src="{{healthNow.imageUrl}}">
+          <div class="card-body">
+            <h5>{{healthNow.name}}</h5>
+            <p class="card-text">{{healthNow.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row card-table justify-content-center">
+      <!-- BDO CMS -->
+      <div class="col-lg-4" data-aos="fade-in-left-1">
+        <div class="card mb-4 project-card" (click)="openModal('CMS')">
+          <img class="card-img-top" src="{{bdoCMS.imageUrl}}">
+          <div class="card-body">
+            <h5>{{bdoCMS.name}}</h5>
+            <p class="card-text">{{bdoCMS.description}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- BDO PMR -->
+      <div class="col-lg-4" data-aos="fade-in-left-2">
+        <div class="card mb-4 project-card" (click)="openModal('PMR')">
+          <img class="card-img-top" src="{{bdoPMR.imageUrl}}">
+          <div class="card-body">
+            <h5>{{bdoPMR.name}}</h5>
+            <p class="card-text">{{bdoPMR.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
