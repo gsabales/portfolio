@@ -11,7 +11,7 @@ import * as AOS from 'aos';
 // import {Email} from '../assets/js/smtp.js';
 import {FormBuilder, Validators} from '@angular/forms';
 import {environment} from '../environments/environment';
-import {Email} from "./models/Email";
+// import {Email} from "./models/Email";
 
 @Component({
   selector: 'app-root',
@@ -46,6 +46,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   portfolioOffset: number = null;
   servicesOffset: number = null;
   contactOffset: number = null;
+  currentYear = new Date().getFullYear();
 
   emailStatus: boolean;
   emailStatusMessage: string = null;
@@ -105,16 +106,16 @@ export class AppComponent implements OnInit, AfterViewInit{
       loop: true
     });
 
-    this.getGeneratedQuote();
+    // this.getGeneratedQuote();
   }
 
-  getGeneratedQuote(): void {
-    this.generalService.getRandomQuote().subscribe(quote => {
-        this.quote = quote.quote;
-        this.author = (quote.author !== null) ? quote.author : 'Anonymous';
-      }
-    );
-  }
+  // getGeneratedQuote(): void {
+  //   this.generalService.getRandomQuote().subscribe(quote => {
+  //       this.quote = quote.quote;
+  //       this.author = (quote.author !== null) ? quote.author : 'Anonymous';
+  //     }
+  //   );
+  // }
 
   getOffsetTop(): void {
     this.homeOffset = this.homeSectionRef.nativeElement.offsetTop;
@@ -209,18 +210,18 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   sendEmail(): void {
-    this.isLoading = true;
-    const email = new Email(
-      this.emailFormGroup.get('name').value,
-      this.emailFormGroup.get('email').value,
-      this.emailFormGroup.get('subject').value,
-      this.emailFormGroup.get('message').value,
-    );
+  //   this.isLoading = true;
+  //   const email = new Email(
+  //     this.emailFormGroup.get('name').value,
+  //     this.emailFormGroup.get('email').value,
+  //     this.emailFormGroup.get('subject').value,
+  //     this.emailFormGroup.get('message').value,
+  //   );
 
-    this.generalService.sendEmail(email).subscribe({
-      next: () => this.requestCompleted(true, 'Your email has been sent. Thank you for your feedback!'),
-      error: () => this.requestCompleted(false, 'Oops! Something went wrong while sending email.')
-    });
+    // this.generalService.sendEmail(email).subscribe({
+    //   next: () => this.requestCompleted(true, 'Your email has been sent. Thank you for your feedback!'),
+    //   error: () => this.requestCompleted(false, 'Oops! Something went wrong while sending email.')
+    // });
 
     // Via SmtpJS
     // Email.send({
