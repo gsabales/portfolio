@@ -14,7 +14,7 @@ I built this Angular app by running the command <b>ng build --aot --prod --outpu
 2. Install dependencies ``npm i``
 3. Install Angular CLI version 11.1.4 ``npm i @angular/cli``
 4. Run ``ng serve`` in IntelliJ terminal then go to ``http://localhost:4200/``
-#How to Deploy
+# How to Deploy
 Reference: https://medium.com/@saleemmalikraja/deploying-an-angular-app-to-firebase-hosting-18f99c9d5722
 1. Install firebase tools v7 ``npm i -g firebase-tools@^7.0.0``
 2. Run ``firebase login``
