@@ -8,10 +8,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.component';
 import {Project} from './models/Project';
 import * as AOS from 'aos';
-// import {Email} from '../assets/js/smtp.js';
 import {FormBuilder, Validators} from '@angular/forms';
-import {environment} from '../environments/environment';
-// import {Email} from "./models/Email";
 
 @Component({
   selector: 'app-root',
@@ -27,6 +24,8 @@ export class AppComponent implements OnInit, AfterViewInit{
   projectForge: Project;
   projectOccupy: Project;
   healthNow: Project;
+  bdoCMS: Project;
+  bdoPMR: Project;
 
   @ViewChild('sideMenu') sideMenuRef: ElementRef;
   @ViewChild('home') homeSectionRef: ElementRef;
@@ -47,17 +46,6 @@ export class AppComponent implements OnInit, AfterViewInit{
   servicesOffset: number = null;
   contactOffset: number = null;
   currentYear = new Date().getFullYear();
-
-  emailStatus: boolean;
-  emailStatusMessage: string = null;
-  isLoading = false;
-  emailFormGroup = this.fb.group({
-      name: [null, [Validators.required, Validators.minLength(4)]],
-      email: [null, [Validators.required, Validators.email]],
-      subject: [null, [Validators.required, Validators.minLength(8)]],
-      message: [null, Validators.required]
-    }
-  );
 
   constructor(private generalService: GeneralService,
               private modalService: NgbModal,
@@ -82,7 +70,24 @@ export class AppComponent implements OnInit, AfterViewInit{
       'KonsultaMD API integration with HealthNow',
       'Enabled HealthNow to access the video conference services of KonsultaMD through API integration. This is where ' +
       'I learned API communication concepts such as OAuth2, JWT and FeignClient.',
-      'assets/images/konsulta-md.png'
+      'assets/images/kmd-stock-photo.png'
+    );
+    this.bdoCMS = new Project(
+      'BDO CMS',
+      'BDO Cash Management System',
+      'BDO Cash Management System (CMS) is a standalone API catered for corporate data of BDO Southbound APIs. This API accepts' +
+      ' aggregated requests and communicates with BDO’s core banking system. As the main developer of this API, I implemented multithreading ' +
+      'via Java’s concurrency library to optimize the API’s performance.',
+      'assets/images/cms-stock-photo.jpg'
+    );
+    this.bdoPMR = new Project(
+      'BDO PMR',
+      'BDO Prepaid Mobile Reload ',
+      'BDO Prepaid Mobile Reload (PMR) is also a standalone API which acts as an intermediary microservice between ' +
+      'BDO’s Airtime Reload (ATR) system and Paymaya API. As the main developer, my objective is to create a passthrough API ' +
+      'that facilitates the flow of reload transactions between BDO and Paymaya. This is where I extensively used Docker ' +
+      'for containerization and got familiar with deployment processes.',
+      'assets/images/pmr-stock-photo.jpg'
     );
   }
 
@@ -162,8 +167,6 @@ export class AppComponent implements OnInit, AfterViewInit{
       this.currentActive = PORTFOLIO;
     } else if (this.isWithinRange(window.pageYOffset, this.servicesOffset, this.contactOffset)) {
       this.currentActive = SERVICES;
-    } else if (window.pageYOffset >= this.contactOffset) {
-      this.currentActive = CONTACT;
     }
 
     // Toggle back-to-top button display on scroll. On first scroll, un-hide the button already to apply animations.
@@ -202,56 +205,16 @@ export class AppComponent implements OnInit, AfterViewInit{
       modalRef.componentInstance.description =  this.healthNow.description;
       modalRef.componentInstance.content = this.healthNow.content;
       modalRef.componentInstance.imageUrl = this.healthNow.imageUrl;
+    } else if (name === 'CMS') {
+      modalRef.componentInstance.name = this.bdoCMS.name;
+      modalRef.componentInstance.description =  this.bdoCMS.description;
+      modalRef.componentInstance.content = this.bdoCMS.content;
+      modalRef.componentInstance.imageUrl = this.bdoCMS.imageUrl;
+    } else if (name === 'PMR') {
+      modalRef.componentInstance.name = this.bdoPMR.name;
+      modalRef.componentInstance.description =  this.bdoPMR.description;
+      modalRef.componentInstance.content = this.bdoPMR.content;
+      modalRef.componentInstance.imageUrl = this.bdoPMR.imageUrl;
     }
   }
-
-  validateFormControl(fcName: string): boolean {
-    return this.emailFormGroup.get(fcName).invalid && (this.emailFormGroup.get(fcName).dirty || this.emailFormGroup.get(fcName).touched);
-  }
-
-  sendEmail(): void {
-  //   this.isLoading = true;
-  //   const email = new Email(
-  //     this.emailFormGroup.get('name').value,
-  //     this.emailFormGroup.get('email').value,
-  //     this.emailFormGroup.get('subject').value,
-  //     this.emailFormGroup.get('message').value,
-  //   );
-
-    // this.generalService.sendEmail(email).subscribe({
-    //   next: () => this.requestCompleted(true, 'Your email has been sent. Thank you for your feedback!'),
-    //   error: () => this.requestCompleted(false, 'Oops! Something went wrong while sending email.')
-    // });
-
-    // Via SmtpJS
-    // Email.send({
-    //   Host: environment.host,
-    //   Username: environment.username,
-    //   Password: environment.elastic_mail_password,
-    //   To: environment.username,
-    //   From: environment.username,
-    //   Subject: this.emailFormGroup.get('subject').value,
-    //   Body: `
-    //         <b>Name: </b>${this.emailFormGroup.get('name').value} <br/>
-    //         <b>Email: </b>${this.emailFormGroup.get('email').value}<br />
-    //         <b>Subject: </b>${this.emailFormGroup.get('subject').value}<br />
-    //         <b>Message:</b> <br /> ${this.emailFormGroup.get('message').value} <br><br>
-    //         <i>This is sent as a feedback from my portfolio website</i><br/><br/>
-    //         <b>~End of Message.~</b>`
-    // }).then(() => {
-    //   this.isLoading = false;
-    //   this.emailFormGroup.reset();
-    //   this.emailSuccess = 'Your email has been sent. Thank you for your feedback!';
-    //   setTimeout(() => this.emailSuccess = null, 2500);
-    // });
-  }
-
-  requestCompleted(status: boolean, message: string): void {
-    this.emailStatus = status;
-    this.emailStatusMessage = message;
-    this.isLoading = false;
-    this.emailFormGroup.reset();
-    setTimeout(() => this.emailStatusMessage = null, 2500);
-  }
-
 }

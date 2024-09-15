@@ -32,7 +32,7 @@
           <li [ngClass]="{'active': currentActive === 'resume'}"><a href="#resume"><i class="bx bx-file-blank"></i><span>Resume</span></a></li>
           <li [ngClass]="{'active': currentActive === 'portfolio'}"><a href="#portfolio"><i class="bx bx-book-content"></i>Projects</a></li>
           <li [ngClass]="{'active': currentActive === 'services'}"><a href="#services"><i class="bx bx-server"></i>Tech Stack</a></li>
-          <li [ngClass]="{'active': currentActive === 'contact'}"><a href="#contact"><i class="bx bx-envelope"></i>Contact</a></li>
+          <!-- <li [ngClass]="{'active': currentActive === 'contact'}"><a href="#contact"><i class="bx bx-envelope"></i>Contact</a></li> -->
         </nav>
       </div>
 
@@ -63,18 +63,19 @@
                 <h3>My Profile</h3>
                  <p class="font-italic" data-aos="fade-in-left-slow">"{{quote}}" - {{author}}</p>
                 <div class="row">
-                  <div class="col-lg-6">
+                  <div class="col-lg-12">
                     <ul>
                       <li><i class="icofont-rounded-right"></i> <strong>Profession:</strong> Web Developer</li>
                       <li><i class="icofont-rounded-right"></i> <strong>Degree:</strong> B.S. Computer Science</li>
+                      <li><i class="icofont-rounded-right"></i> <strong>Education:</strong> Polytechnic University of the Philippines</li>
                     </ul>
                   </div>
                 </div>
-                <p>Aspiring career-shifter from embedded system unit tester to web developer.
-                  Has obtained sufficient knowledge in several web development frameworks and
-                  concepts in a short amount of time, such as Spring Boot, Angular, Bootstrap,
+                <p>Competent and detail-driven web developer with {{currentYear - 2019}} years of experience in developing web applications
+                  using Spring Boot and Angular tech stack. Has obtained sufficient knowledge in several web development
+                  frameworks and concepts in a short amount of time, such as Spring Boot, Angular, Bootstrap,
                   Java and Microservices. Eager to learn new technical knowledge and concepts
-                  for the benefit of my career and the organization as well. </p>
+                  for the benefit of my career and the organization as well.</p>
               </div>
             </div>
           </div>
@@ -87,8 +88,8 @@
               <h2>Skills</h2>
               <p>
                 Before shifting careers, I thought that learning Java is enough to be a successful developer, and boy
-                was I wrong! Now, within 1.5 years as a web developer, I obtained a lot of technical skills necessary
-                for creating real-world applications. Here is my assessment of those skills so far.
+                was I wrong! I believe that I have obtained a lot of technical skills necessary
+                for creating real-world applications ever since.
               </p>
             </section>
 
@@ -127,10 +128,10 @@
                   </div>
                 </div>
                 <div class="progress">
-                  <span class="skill">MySQL Workbench<i class="val">65%</i></span>
+                  <span class="skill">Docker<i class="val">75%</i></span>
                   <div class="progress-bar-wrap">
-                    <div class="progress-bar" data-aos="progress-bar-5" role="progressbar"
-                         aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%"></div>
+                    <div class="progress-bar" data-aos="progress-bar-4" role="progressbar"
+                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 65%"></div>
                   </div>
                 </div>
                 <div class="progress">
@@ -150,25 +151,24 @@
           <div class="container">
             <section class="section-title pt-0">
               <h2>Resume</h2>
-              <p>I've been working in the IT industry for more than 6 years now. For the first 5 years, I was an embedded system unit tester but
+              <p>I've been working in the IT industry for more than 6 years now. I was an embedded system unit tester before but
                  ever since I graduated from college, I really wanted to pursue a career in software development. I took the opportunity to shift
                  careers in 2019 and from that point, I continue to pursue my goal to become a skilled developer.
               </p>
             </section>
 
             <div class="row">
-
               <div class="col-lg-6" data-aos="fade-in-out-up1">
                 <h3 class="resume-title">Summary</h3>
                 <div class="resume-item pb-0">
                   <h4>Glenn Sabales</h4>
                   <p><em>
-                    Capable and detail-driven web developer with years of experience in developing web applications using Springboot + Angular
+                    Capable and detail-driven web developer with {{currentYear - 2019}} years of experience in developing web applications using Springboot + Angular
                     tech stack.
                   </em></p>
                   <ul>
                     <li>Binangonan, Rizal</li>
-                    <li>0926-649-5270</li>
+                    <li>(02) 8442-5216</li>
                     <li>glenn.sabales@gmail.com</li>
                   </ul>
                 </div>
@@ -227,8 +227,8 @@
             <section class="section-title pt-0">
               <h2>Projects</h2>
               <p>
-                Web development is one of those professions where you'll gain a lot more knowledge through actual experience
-                rather than college lectures. As such, these are the projects where I participated in actual development and
+                Web development is a profession where you will learn more through actual experience
+                better than class lectures. As such, these are the projects where I was involved in which helped me to
                 obtained fundamental skills in return.
               </p>
             </section>
@@ -266,6 +266,28 @@
                   </div>
                 </div>
               </div>
+              <div class="row card-table justify-content-center">
+                <!-- BDO CMS -->
+                <div class="col-lg-4" data-aos="fade-in-left-1">
+                  <div class="card mb-4 project-card" (click)="openModal('CMS')">
+                    <img class="card-img-top" src="{{bdoCMS.imageUrl}}">
+                    <div class="card-body">
+                      <h5>{{bdoCMS.name}}</h5>
+                      <p class="card-text">{{bdoCMS.description}}</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- BDO PMR -->
+                <div class="col-lg-4" data-aos="fade-in-left-2">
+                  <div class="card mb-4 project-card" (click)="openModal('PMR')">
+                    <img class="card-img-top" src="{{bdoPMR.imageUrl}}">
+                    <div class="card-body">
+                      <h5>{{bdoPMR.name}}</h5>
+                      <p class="card-text">{{bdoPMR.description}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -294,9 +316,8 @@
               </div>
               <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-in-left-3">
                 <div class="icon"><i class="icofont-database"></i></div>
-                <h4 class="title">MySQL/PostgreSQL</h4>
-                <p class="description">I have used relational databases such as MySQL and PostgreSQL, but I'm more inclined to use
-                MySQL and its UI tool MySQL Workbench</p>
+                <h4 class="title">Microsoft SQL</h4>
+                <p class="description">I have used relational databases such as MySQL and PostgreSQL, but I'm more inclined to use MS SQL</p>
               </div>
               <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-in-right-1">
                 <div class="icon"><i class="icofont-github"></i></div>
@@ -325,81 +346,38 @@
           <div class="container">
             <section class="section-title pt-0">
               <h2>Contact</h2>
-              <p>Do you have any thoughts on my portfolio website? Want to talk about a job opening?
+              <p>Any thoughts on my portfolio website? Want to talk about a job opening?
               Feel free to contact me, preferably via email.</p>
             </section>
 
             <div class="row">
-
-              <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-in-out-up1">
+              <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-in-out-up1">
                 <div class="info">
                   <div class="address">
                     <i class="icofont-google-map"></i>
                     <h4>Location</h4>
                     <p>Binangonan, Rizal</p>
                   </div>
-
                   <div class="email">
                     <i class="icofont-envelope"></i>
                     <h4>Email</h4>
                     <p>glenn.sabales@gmail.com</p>
                   </div>
-
+                </div>
+              </div>
+              <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-in-out-up1">
+                <div class="info">
                   <div class="phone">
                     <i class="icofont-phone"></i>
                     <h4>Call:</h4>
                     <p>(02) 8442-5216</p>
                   </div>
+                  <div class="linkedin">
+                    <i class="icofont-linkedin"></i>
+                    <h4>LinkedIn:</h4>
+                    <p><a href="https://www.linkedin.com/in/glenn-sabales-2a0b6386">https://www.linkedin.com/in/glenn-sabales-2a0b6386/</a></p>
+                  </div>
                 </div>
-              </div>
-
-              <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-in-out-up2">
-                <!-- Email Form -->
-                <form [formGroup]="emailFormGroup" class="php-email-form">
-
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="name">Your Name</label>
-                      <input type="text" name="name" class="form-control" id="name" formControlName="name" [ngClass]="{'red-border': validateFormControl('name')}">
-                      <div *ngIf="validateFormControl('name')" class="alert alert-danger">
-                        <div *ngIf="emailFormGroup.get('name').errors.required">Name is required</div>
-                        <div *ngIf="emailFormGroup.get('name').errors.minlength">Please enter at least 4 characters</div>
-                      </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="email">Your Email</label>
-                      <input type="text" name="email" class="form-control" id="email" formControlName="email" [ngClass]="{'red-border': validateFormControl('email')}">
-                      <div *ngIf="validateFormControl('email')" class="alert alert-danger">
-                        <div *ngIf="emailFormGroup.get('email').errors.required">Email is required</div>
-                        <div *ngIf="emailFormGroup.get('email').errors.email">Please enter a valid email</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" name="subject" class="form-control" id="subject" formControlName="subject" [ngClass]="{'red-border': validateFormControl('subject')}">
-                    <div *ngIf="validateFormControl('subject')" class="alert alert-danger">
-                      <div *ngIf="emailFormGroup.get('subject').errors.required">Subject is required</div>
-                      <div *ngIf="emailFormGroup.get('subject').errors.minlength">Please enter a least 8 characters</div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea class="form-control" name="message" rows="10" id="message" formControlName="message" [ngClass]="{'red-border': validateFormControl('message')}"></textarea>
-                    <div *ngIf="validateFormControl('message')" class="alert alert-danger">
-                      <div *ngIf="emailFormGroup.get('message').errors.required">Please write something for me</div>
-                    </div>
-                  </div>
-
-                  <div *ngIf="!!emailStatusMessage" [ngClass]="this.emailStatus ? 'alert alert-success' : 'alert alert-danger'" [innerHTML]="this.emailStatusMessage"></div>
-                  <div class="text-center">
-                    <div *ngIf="isLoading"><img class="loading-spinner" src="assets/images/loading.gif"/></div>
-                    <button *ngIf="!isLoading" type="submit" [disabled]="!this.emailFormGroup.valid" [ngClass]="{'disabled':!this.emailFormGroup.valid}"
-                            (click)="sendEmail()">Send Message</button></div>
-
-                </form>
               </div>
             </div>
           </div>
