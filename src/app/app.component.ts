@@ -3,8 +3,8 @@ import Typed from 'typed.js';
 import {GeneralService} from './services/general.service';
 import {Quote} from './models/Quote';
 import {DOCUMENT} from '@angular/common';
-import {HOME, ABOUT, RESUME, TOGGLED, PORTFOLIO, SERVICES, CONTACT} from './utils/constants';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {HOME, ABOUT, RESUME, TOGGLED, PORTFOLIO, SERVICES, ProjectsEnum} from './utils/constants';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.component';
 import {Project} from './models/Project';
 import * as AOS from 'aos';
@@ -47,6 +47,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   servicesOffset: number = null;
   contactOffset: number = null;
   currentYear = new Date().getFullYear();
+  projectsEnum: ProjectsEnum;
 
   constructor(private generalService: GeneralService,
               private modalService: NgbModal,
@@ -199,36 +200,20 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   openModal(name: string): void {
     const modalRef = this.modalService.open(ProjectsModalComponent, {centered: true});
-    if (name === 'Forge') {
-      modalRef.componentInstance.name = this.projectForge.name;
-      modalRef.componentInstance.description =  this.projectForge.description;
-      modalRef.componentInstance.content = this.projectForge.content;
-      modalRef.componentInstance.imageUrl = this.projectForge.imageUrl;
-    } else if (name === 'Occupy') {
-      modalRef.componentInstance.name = this.projectOccupy.name;
-      modalRef.componentInstance.description =  this.projectOccupy.description;
-      modalRef.componentInstance.content = this.projectOccupy.content;
-      modalRef.componentInstance.imageUrl = this.projectOccupy.imageUrl;
-    } else if (name === 'HealthNow') {
-      modalRef.componentInstance.name = this.healthNow.name;
-      modalRef.componentInstance.description =  this.healthNow.description;
-      modalRef.componentInstance.content = this.healthNow.content;
-      modalRef.componentInstance.imageUrl = this.healthNow.imageUrl;
-    } else if (name === 'CMS') {
-      modalRef.componentInstance.name = this.bdoCMS.name;
-      modalRef.componentInstance.description =  this.bdoCMS.description;
-      modalRef.componentInstance.content = this.bdoCMS.content;
-      modalRef.componentInstance.imageUrl = this.bdoCMS.imageUrl;
-    } else if (name === 'PMR') {
-      modalRef.componentInstance.name = this.bdoPMR.name;
-      modalRef.componentInstance.description =  this.bdoPMR.description;
-      modalRef.componentInstance.content = this.bdoPMR.content;
-      modalRef.componentInstance.imageUrl = this.bdoPMR.imageUrl;
-    } else if (name === 'Sandstone') {
-      modalRef.componentInstance.name = this.sandstoneTech.name;
-      modalRef.componentInstance.description =  this.sandstoneTech.description;
-      modalRef.componentInstance.content = this.sandstoneTech.content;
-      modalRef.componentInstance.imageUrl = this.sandstoneTech.imageUrl;
+    switch (name) {
+      case ProjectsEnum.FORGE: this.assignModal(modalRef, this.projectForge); break;
+      case ProjectsEnum.OCCUPY: this.assignModal(modalRef, this.projectOccupy); break;
+      case ProjectsEnum.HEALTHNOW: this.assignModal(modalRef, this.healthNow); break;
+      case ProjectsEnum.CMS: this.assignModal(modalRef, this.bdoCMS); break;
+      case ProjectsEnum.PMR: this.assignModal(modalRef, this.bdoPMR); break;
+      case ProjectsEnum.SANDSTONE: this.assignModal(modalRef, this.sandstoneTech); break;
     }
+  }
+
+  private assignModal(modalRef: NgbModalRef, project: Project): void {
+    modalRef.componentInstance.name = project.name;
+    modalRef.componentInstance.description = project.description;
+    modalRef.componentInstance.content = project.content;
+    modalRef.componentInstance.imageUrl = project.imageUrl;
   }
 }
