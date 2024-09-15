@@ -26,6 +26,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   healthNow: Project;
   bdoCMS: Project;
   bdoPMR: Project;
+  sandstoneTech: Project;
 
   @ViewChild('sideMenu') sideMenuRef: ElementRef;
   @ViewChild('home') homeSectionRef: ElementRef;
@@ -88,6 +89,14 @@ export class AppComponent implements OnInit, AfterViewInit{
       'that facilitates the flow of reload transactions between BDO and Paymaya. This is where I extensively used Docker ' +
       'for containerization and got familiar with deployment processes.',
       'assets/images/pmr-stock-photo.jpg'
+    );
+    this.sandstoneTech = new Project(
+      'Sandstone Technology',
+      'Loan Origination Products',
+      'Sandstone offers loan origination products such as LendFast and Apply, which are applications that are much larger in scope ' +
+      'compared to the ones I handled before. Thus, I work with a team and my job involves mostly of bug fixing and implementing features requested ' +
+      'by client bank. I learned how larger enterprise systems operate and was able to work with developers both local and foreign.',
+      'assets/images/sandstone.png'
     );
   }
 
@@ -215,6 +224,11 @@ export class AppComponent implements OnInit, AfterViewInit{
       modalRef.componentInstance.description =  this.bdoPMR.description;
       modalRef.componentInstance.content = this.bdoPMR.content;
       modalRef.componentInstance.imageUrl = this.bdoPMR.imageUrl;
+    } else if (name === 'Sandstone') {
+      modalRef.componentInstance.name = this.sandstoneTech.name;
+      modalRef.componentInstance.description =  this.sandstoneTech.description;
+      modalRef.componentInstance.content = this.sandstoneTech.content;
+      modalRef.componentInstance.imageUrl = this.sandstoneTech.imageUrl;
     }
   }
 }

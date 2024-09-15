@@ -266,7 +266,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row card-table justify-content-center">
+              <div class="row card-table">
                 <!-- BDO CMS -->
                 <div class="col-lg-4" data-aos="fade-in-left-1">
                   <div class="card mb-4 project-card" (click)="openModal('CMS')">
@@ -284,6 +284,16 @@
                     <div class="card-body">
                       <h5>{{bdoPMR.name}}</h5>
                       <p class="card-text">{{bdoPMR.description}}</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Sandstone Tech -->
+                <div class="col-lg-4" data-aos="fade-in-left-3">
+                  <div class="card mb-4 project-card" (click)="openModal('Sandstone')">
+                    <img class="card-img-top" src="{{sandstoneTech.imageUrl}}">
+                    <div class="card-body">
+                      <h5>{{sandstoneTech.name}}</h5>
+                      <p class="card-text">{{sandstoneTech.description}}</p>
                     </div>
                   </div>
                 </div>
