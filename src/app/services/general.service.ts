@@ -13,10 +13,10 @@ export class GeneralService {
 
   constructor(private http: HttpClient) { }
 
-  // getRandomQuote(): Observable<Quote> {
-  //   return this.http.get<Quote>(QUOTES_API);
-  // }
-  //
+  getRandomQuote(): Observable<Quote> {
+    return this.http.get<Quote>(QUOTES_API);
+  }
+
   // sendEmail(email: Email): Observable<Email> {
   //   return this.http.post<Email>(environment.email_url, email);
   // }

@@ -106,16 +106,16 @@ export class AppComponent implements OnInit, AfterViewInit{
       loop: true
     });
 
-    // this.getGeneratedQuote();
+    this.getGeneratedQuote();
   }
 
-  // getGeneratedQuote(): void {
-  //   this.generalService.getRandomQuote().subscribe(quote => {
-  //       this.quote = quote.quote;
-  //       this.author = (quote.author !== null) ? quote.author : 'Anonymous';
-  //     }
-  //   );
-  // }
+  getGeneratedQuote(): void {
+    this.generalService.getRandomQuote().subscribe(quote => {
+      this.quote = quote.quote;
+      this.author = (quote.author !== null) ? quote.author : 'Anonymous';
+      }
+    );
+  }
 
   getOffsetTop(): void {
     this.homeOffset = this.homeSectionRef.nativeElement.offsetTop;
