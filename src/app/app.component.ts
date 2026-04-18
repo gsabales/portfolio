@@ -9,6 +9,7 @@ import {ProjectsModalComponent} from './modals/projects-modal/projects-modal.com
 import {Project} from './models/Project';
 import * as AOS from 'aos';
 import {FormBuilder} from '@angular/forms';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -17,11 +18,9 @@ import {FormBuilder} from '@angular/forms';
 })
 export class AppComponent implements OnInit, AfterViewInit{
   toggle: boolean;
-  quotes: Quote[];
-  quote: string;
-  author: string;
+  quote$: Observable<Quote>;
   option: string;
-  projects: Array<Project>;
+  projects$: Observable<Array<Project>>;
 
   @ViewChild('sideMenu') sideMenuRef: ElementRef;
   @ViewChild('home') homeSectionRef: ElementRef;
@@ -48,7 +47,8 @@ export class AppComponent implements OnInit, AfterViewInit{
               private fb: FormBuilder,
               @Inject(DOCUMENT) private document: any)
   {
-    this.generalService.getProjects().subscribe(data => { this.projects = data; });
+    this.projects$ = this.generalService.getProjects();
+    this.quote$ = this.generalService.getRandomQuote();
   }
 
   ngAfterViewInit(): void {
@@ -70,16 +70,6 @@ export class AppComponent implements OnInit, AfterViewInit{
       backDelay: 2000,
       loop: true
     });
-
-    this.getGeneratedQuote();
-  }
-
-  getGeneratedQuote(): void {
-    this.generalService.getRandomQuote().subscribe(quote => {
-      this.quote = quote.quote;
-      this.author = (quote.author !== null) ? quote.author : 'Anonymous';
-      }
-    );
   }
 
   getOffsetTop(): void {

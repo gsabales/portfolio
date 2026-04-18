@@ -61,8 +61,7 @@
               </div>
               <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-in-out-right">
                 <h3>My Profile</h3>
-<!--                TO DO: Fix quote randomizer later-->
-<!--                 <p class="font-italic" data-aos="fade-in-left-slow">"{{quote}}" - {{author}}</p>-->
+                 <p class="font-italic" *ngIf="quote$ | async as quote" data-aos="fade-in-left-slow">"{{quote.quote}}" - {{quote.author}}</p>
                 <div class="row">
                   <div class="col-lg-12">
                     <ul>
@@ -232,7 +231,7 @@
             <!-- Projects -->
             <div class="container">
               <div class="row card-table">
-                <div class="col-lg-4" *ngFor="let project of projects, let i = index"
+                <div class="col-lg-4" *ngFor="let project of projects$ | async; let i = index"
                      [attr.data-aos]="'fade-in-left-' + ((i % 3) + 1)">
                   <div class="card mb-4 project-card" (click)="openModal(project)">
                     <img class="card-img-top" [src]="project?.imageUrl">

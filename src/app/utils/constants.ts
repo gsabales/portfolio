@@ -6,5 +6,5 @@ export const SERVICES = 'services';
 export const CONTACT = 'contact';
 
 export const TOGGLED = 'toggled';
-export const QUOTES_API = 'https://quotes-api-self.vercel.app/quote';
+export const QUOTES_API = 'https://quoteslate.vercel.app/api/quotes/random';
 
