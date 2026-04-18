@@ -27,3 +27,6 @@ Reference: https://medium.com/@saleemmalikraja/deploying-an-angular-app-to-fireb
     - File dist/portfolio/index.html already exists. Overwrite? No
 5. Ensure ```"site": <app-id>``` is in firebase.json,
 6. Run ``firebase deploy``
+7. If the following error is encountered:
+   - ``Error: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential.``
+   - Run ``firebase login --reauth`` to refresh expired credentials
