@@ -14,4 +14,8 @@ export class GeneralService {
   getRandomQuote(): Observable<Quote> {
     return this.http.get<Quote>(QUOTES_API);
   }
+
+  getProjects(): Observable<any> {
+    return this.http.get('assets/projects.json');
+  }
 }
